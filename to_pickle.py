@@ -17,9 +17,13 @@ KDD_conf = pd.read_pickle(join(PKL_PATH, 'KDD_Conf.pkl'))
 KDD_conf_ins = pd.read_pickle(join(PKL_PATH, 'KDD_ConfInstance.pkl'))
 KDD_PAA = pd.read_pickle(join(PKL_PATH, 'KDD_PAA.pkl'))
 conf = pd.read_pickle(join(PKL_PATH, 'Conf.pkl'))
+KDD_ref = pd.read_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
 
 # filter PaperAuthorAffiliation[done]
 def proc_PAA(KDD_PAA, fname, cur, end):
+    # use set to speedup lookup operation
+    KDD_Papers = set(KDD_paper['Paper_ID'].values)
+    AFFs = set(KDD_aff['Affiliation_ID'].values)
     with open(fname, 'r') as f:
         f.seek(cur)
         data = f.read(end-cur)
@@ -29,7 +33,7 @@ def proc_PAA(KDD_PAA, fname, cur, end):
     c = 0
     pa,au,af = [],[],[]
     for i in range(len(paperIds)):
-        if paperIds[i] in KDD_paper['Paper_ID'].values and affIds[i] in KDD_aff['Affiliation_ID'].values:
+        if paperIds[i] in KDD_Papers and affIds[i] in AFFs:
             pa += [paperIds[i]]
             au += [authorIds[i]]
             af += [affIds[i]]
@@ -44,6 +48,8 @@ def proc_PAA(KDD_PAA, fname, cur, end):
 
 # filter PaperReferences
 def proc_ref(KDD_ref, fname, cur, end):
+    # use set to speedup lookup: O(1)
+    KDD_Papers = set(KDD_paper['Paper_ID'].values)
     with open(fname, 'r') as f:
         f.seek(cur)
         data = f.read(end-cur)
@@ -52,11 +58,10 @@ def proc_ref(KDD_ref, fname, cur, end):
     c = 0
     pa,ref = [],[]
     for i in range(len(paperIds)):
-        if paperIds[i] in KDD_paper['Paper_ID'].values or refIds[i] in KDD_paper['Paper_ID'].values:
+        if paperIds[i] in KDD_Papers or refIds[i] in KDD_Papers:
             pa += [paperIds[i]]
             ref += [refIds[i]]
             c += 1
-    print(c)
     if c > 0:
         refLock.acquire()
         KDD_ref['Paper_ID'] += pa
@@ -66,6 +71,9 @@ def proc_ref(KDD_ref, fname, cur, end):
 
 # filter Papers
 def proc_PA(KDD_PA, fname, cur, end):
+    # use set to speedup lookup operation
+    Ref1 = set(KDD_ref['Paper_ID'].values)
+    Ref2 = set(KDD_ref['Paper_Reference_ID'].values)
     with open(fname, 'r') as f:
         f.seek(cur)
         data = f.read(end-cur)
@@ -74,7 +82,7 @@ def proc_PA(KDD_PA, fname, cur, end):
     c = 0
     pId,rk = [],[]
     for i in range(len(paperIds)):
-        if paperIds[i] in KDD_ref['Paper_ID'].values or KDD_ref['Paper_Reference_ID']:
+        if paperIds[i] in Ref1 or paperIds[i] in Ref2:
             pId += [paperIds[i]]
             rk += [rank[i]]
             c += 1
@@ -115,47 +123,18 @@ def proc_PA(KDD_PA, fname, cur, end):
 # df = pd.DataFrame({x:KDD_PAA[x] for x in H})
 # df.to_pickle(join(PKL_PATH, 'KDD_PAA.pkl'))
 
-# filter PaperReferences[current]
-refLock = mp.Lock()
-REF_PATH = join(DATA_PATH, 'PaperReferences.txt')
-filesize = getsize(REF_PATH)
-split_size = 1024*1024*30
-pool = mp.Pool(processes=4)
-cur = 0
-KDD_ref = mp.Manager().dict()
-KDD_ref['Paper_ID']=[]
-KDD_ref['Paper_Reference_ID']=[]
-
-with open(REF_PATH) as f:
-    for chunk in xrange(filesize // split_size):
-        if cur + split_size > filesize:
-            end = filesize
-        else:
-            end = cur + split_size
-        f.seek(end)
-        f.readline()
-        end = f.tell()
-        pool.apply_async(proc_ref, args=[KDD_ref, REF_PATH, cur, end])
-        cur = end
-    pool.close()
-    pool.join()
-
-H = ['Paper_ID', 'Paper_Reference_ID']
-df = pd.DataFrame({x:KDD_ref[x] for x in H})
-df.to_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
-
-# filter papers[next]
-# paLock = mp.Lock()
-# PA_PATH = join(DATA_PATH, 'Papers.txt')
-# filesize = getsize(PA_PATH)
+# filter PaperReferences[done]
+# refLock = mp.Lock()
+# REF_PATH = join(DATA_PATH, 'PaperReferences.txt')
+# filesize = getsize(REF_PATH)
 # split_size = 1024*1024*30
 # pool = mp.Pool(processes=4)
 # cur = 0
-# KDD_PA = mp.Manager().dict()
-# KDD_PA['Paper_ID']=[]
-# KDD_PA['Paper_Rank']=[]
+# KDD_ref = mp.Manager().dict()
+# KDD_ref['Paper_ID']=[]
+# KDD_ref['Paper_Reference_ID']=[]
 
-# with open(PA_PATH) as f:
+# with open(REF_PATH) as f:
 #     for chunk in xrange(filesize // split_size):
 #         if cur + split_size > filesize:
 #             end = filesize
@@ -164,11 +143,40 @@ df.to_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
 #         f.seek(end)
 #         f.readline()
 #         end = f.tell()
-#         pool.apply_async(proc_PA, args=[KDD_PA, PA_PATH, cur, end])
+#         pool.apply_async(proc_ref, args=[KDD_ref, REF_PATH, cur, end])
 #         cur = end
 #     pool.close()
 #     pool.join()
 
-# H = ['Paper_ID', 'Paper_Rank']
-# df = pd.DataFrame({x:KDD_PA[x] for x in H})
-# df.to_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
+# H = ['Paper_ID', 'Paper_Reference_ID']
+# df = pd.DataFrame({x:KDD_ref[x] for x in H})
+# df.to_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
+
+# filter papers[next]
+paLock = mp.Lock()
+PA_PATH = join(DATA_PATH, 'Papers.txt')
+filesize = getsize(PA_PATH)
+split_size = 1024*1024*30
+pool = mp.Pool(processes=4)
+cur = 0
+KDD_PA = mp.Manager().dict()
+KDD_PA['Paper_ID']=[]
+KDD_PA['Paper_Rank']=[]
+
+with open(PA_PATH) as f:
+    for chunk in xrange(filesize // split_size):
+        if cur + split_size > filesize:
+            end = filesize
+        else:
+            end = cur + split_size
+        f.seek(end)
+        f.readline()
+        end = f.tell()
+        pool.apply_async(proc_PA, args=[KDD_PA, PA_PATH, cur, end])
+        cur = end
+    pool.close()
+    pool.join()
+
+H = ['Paper_ID', 'Paper_Rank']
+df = pd.DataFrame({x:KDD_PA[x] for x in H})
+df.to_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
