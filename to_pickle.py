@@ -18,6 +18,29 @@ KDD_conf_ins = pd.read_pickle(join(PKL_PATH, 'KDD_ConfInstance.pkl'))
 KDD_PAA = pd.read_pickle(join(PKL_PATH, 'KDD_PAA.pkl'))
 conf = pd.read_pickle(join(PKL_PATH, 'Conf.pkl'))
 KDD_ref = pd.read_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
+ACA = pd.read_pickle(join(PKL_PATH, 'KDD_ACA.pkl'))
+
+# filter author
+def proc_Author(KDD_A, fname, cur, end):
+    authorSet = set(ACA['Author_ID'].values)
+    with open(fname, 'r') as f:
+        f.seek(cur)
+        data = f.read(end-cur)
+    authorIds = re.findall('(.*)\t.*\n', data)
+    authorNames = re.findall('.*\t(.*)\n', data)
+    c = 0
+    aid, aName = [],[]
+    for i in range(len(authorIds)):
+        if authorIds[i] in authorSet:
+            aid += [authorIds[i]]
+            aName += [authorNames[i]]
+            c += 1
+    print('Proc {0} authorIds, found {1} in selected author'.format(len(authorIds), c))
+    if c > 0:
+        with paLock:
+            KDD_A['Author_ID'] += aid
+            KDD_A['Author_Name'] += aName
+            print('c={0}, Author size = {1}'.format(c, len(authors['Author_ID'])))
 
 # filter PaperAuthorAffiliation[done]
 def proc_PAA(KDD_PAA, fname, cur, end):
@@ -92,6 +115,7 @@ def proc_PA(KDD_PA, fname, cur, end):
         KDD_PA['Paper_Rank'] += rk
         print('c={0}, KDD_PA size = {1}'.format(c, len(KDD_PA['Paper_ID'])))
         paLock.release()
+    print('done')
 
 # filter PaperAuthorAffiliations[done]
 # paaLock = mp.Lock()
@@ -153,17 +177,46 @@ def proc_PA(KDD_PA, fname, cur, end):
 # df.to_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
 
 # filter papers[next]
-paLock = mp.Lock()
-PA_PATH = join(DATA_PATH, 'Papers.txt')
-filesize = getsize(PA_PATH)
+# paLock = mp.Lock()
+# PA_PATH = join(DATA_PATH, 'Papers.txt')
+# filesize = getsize(PA_PATH)
+# split_size = 1024*1024*30
+# pool = mp.Pool(processes=4)
+# cur = 0
+# KDD_PA = mp.Manager().dict()
+# KDD_PA['Paper_ID']=[]
+# KDD_PA['Paper_Rank']=[]
+
+# with open(PA_PATH) as f:
+#     for chunk in xrange(filesize // split_size):
+#         if cur + split_size > filesize:
+#             end = filesize
+#         else:
+#             end = cur + split_size
+#         f.seek(end)
+#         f.readline()
+#         end = f.tell()
+#         pool.apply_async(proc_PA, args=[KDD_PA, PA_PATH, cur, end])
+#         cur = end
+#     pool.close()
+#     pool.join()
+
+# H = ['Paper_ID', 'Paper_Rank']
+# df = pd.DataFrame({x:KDD_PA[x] for x in H})
+# df.to_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
+
+# filter authors
+A_PATH = join(DATA_PATH, 'Authors.txt')
+filesize = getsize(A_PATH)
 split_size = 1024*1024*30
+paLock = mp.Lock()
 pool = mp.Pool(processes=4)
 cur = 0
-KDD_PA = mp.Manager().dict()
-KDD_PA['Paper_ID']=[]
-KDD_PA['Paper_Rank']=[]
+KDD_A = mp.Manager().dict()
+KDD_A['Author_ID']=[]
+KDD_A['Author_Name']=[]
 
-with open(PA_PATH) as f:
+with open(A_PATH) as f:
     for chunk in xrange(filesize // split_size):
         if cur + split_size > filesize:
             end = filesize
@@ -172,11 +225,11 @@ with open(PA_PATH) as f:
         f.seek(end)
         f.readline()
         end = f.tell()
-        pool.apply_async(proc_PA, args=[KDD_PA, PA_PATH, cur, end])
+        pool.apply_async(proc_Author, args=[KDD_A, A_PATH, cur, end])
         cur = end
     pool.close()
     pool.join()
 
-H = ['Paper_ID', 'Paper_Rank']
-df = pd.DataFrame({x:KDD_PA[x] for x in H})
-df.to_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
+H = ['Author_ID', 'Author_Name']
+df = pd.DataFrame({x:KDD_A[x] for x in H})
+df.to_pickle(join(join(dirname(__file__), 'pkl'), 'Authors.pkl'))
