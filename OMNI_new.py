@@ -11,6 +11,12 @@ class PrepareGraph:
         self.data = data[data['Conference_ID'] == self.confId]
         (self.authorDict, self.authorNameDict, self.authorIdDict) = self.encodeAuthor()
         self.N = len(self.authorDict)
+        self.AuthorAffiliationDict = self.genAuthorAffiliationDict()
+
+    def genAuthorAffiliationDict(self):
+        affs = pd.read_pickle(join('pkl', 'KDD_PAA.pkl'))
+        Dict = {row['Author_ID']:row['Affiliation_ID'] for idx, row in affs.iterrows()}
+        return Dict
 
     def encodeAuthor(self):
         authorDict = {}
@@ -79,27 +85,60 @@ class OMNIProp:
         self.graph = self.pre.genGraph()
         self.lamda, self.eta = lamda, eta
         self.genPrior()
+        self.getGroundTruthInfluence()
+        self.etas = []
 
     def run(self, st_year, ed_year):
-        cSum = 1
         for year in range(st_year,ed_year+1):
-            self.lamda = self.lamda * (year-st_year+1) / cSum
+            self.year = year
             print('[{0} Year]'.format(year))
             if year == st_year:
-                self.initParam(year)
+                self.initParam()
+                self.prop()
             else:
-                self.updateParam(year)
-            self.prop()
-            cSum += year-st_year+2
+                self.updateParam()
+                eta = self.findBestProp()
+                self.etas.append(eta)
         return (self.AS, self.AT, self.CS, self.CT)
 
-    def genLabeledDict(self, ALabel):
-        return {i: True if ALabel[i,0] == 0 else False for i in range(self.N)}
+    def findBestProp(self):
+        Etas = [1.0/2,1.0/3,2.0/3,1.0/4,3.0/4,1.0/5,2.0/5,3.0/5,4.0/5,1.0/6,5.0/6,1.0/7,2.0/7,3.0/7,4.0/7,5.0/7,6.0/7]
+        meta, merror = None, None
+        for eta in Etas:
+            self.updateEta(eta)
+            self.prop()
+            error = self.calcError()
+            if merror is None:
+                meta, merror = eta, error
+            elif merror > error:
+                meta, merror = eta, error
+            self.rollback()
+            print('eta = {0}, error = {1}'.format(eta, error))
+        self.rollback()
+        self.updateEta(meta)
+        self.prop()
+        return meta
 
+    def calcError(self):
+        affMap, gtScore = {}, []
+        for aff in set(self.pre.AuthorAffiliationDict.values()):
+            affMap[aff] = len(affMap)
+            gtScore.append(self.gtInf[self.gtInf['Affiliation_ID'] == aff]['Influence'].iloc[0])
+        gtScore, score = np.array(gtScore), np.zeros(len(affMap))
+        for i in range(self.N):
+            A, C = 0.0, 0.0
+            for j in range(11):
+                A += self.AS[i,j]*i
+                C += self.CS[i,j]*(1.0/(j+1))
+            score[affMap[self.pre.AuthorAffiliationDict[self.pre.authorIdDict[i]]]] += A*C
+        diff = gtScore-score
+        error = np.dot(diff,diff)
+        return error
+        
     def prop(self):
         # AcceptNumLabel
         diff = 1
-        while diff > 1e-6:
+        while diff > 1e-5:
             AT = self.iterateT(self.AS, self.BA)
             AS, ASU = self.iterateS(self.AS, self.AT, self.BA)
             diff = np.linalg.norm(AT-self.AT) + np.linalg.norm(ASU-self.ASU)
@@ -113,6 +152,14 @@ class OMNIProp:
             diff = np.linalg.norm(CT-self.CT) + np.linalg.norm(CSU-self.CSU)
             self.CT, self.CS, self.CSU = CT, CS, CSU
             # print('coAuthorLabel iter diff={0}'.format(diff))
+
+    def genLabeledDict(self, ALabel):
+        return {i: True if ALabel[i,0] == 0 else False for i in range(self.N)}
+
+    def getGroundTruthInfluence(self):
+        Infs = pd.read_pickle(join('pkl', 'Influence.pkl'))
+        Infs = Infs[Infs['Conference_ID'] == self.pre.confId]
+        self.Infs = Infs
 
     def genPrior(self): # avg (per year)
         s, t = np.array([0.0 for x in range(11)]), np.array([0.0 for x in range(11)])
@@ -140,19 +187,29 @@ class OMNIProp:
             SS[self.UDict[i],:] = SU[i,:]
         return SS
 
-    def initParam(self, year):
-        self.AS, self.AT, self.CS, self.CT, self.UDict = self.getParam(self.BA, self.BC, year)
+    def initParam(self):
+        self.AS, self.AT, self.CS, self.CT, self.UDict = self.getParam(self.BA, self.BC, self.year)
         self.ASU, self.CSU = self.getUnlabeledS()
         self.graphU = self.getUnlabeledGraph()
+        self.gtInf = self.Infs[self.Infs['Year'] == self.year]
 
-    def updateParam(self, year):
-        AS, AT, CS, CT, self.UDict = self.getParam(self.BA, self.BC, year)
-        self.AS = self.AS*(1-self.eta) + AS*self.eta
-        self.AT = self.AT*(1-self.eta) + AT*self.eta
-        self.CS = self.CS*(1-self.eta) + CS*self.eta
-        self.CT = self.CT*(1-self.eta) + CT*self.eta
+    def updateEta(self, eta):
+        self.AS = self.oAS*(1-eta) + self.AS*eta
+        self.AT = self.oAT*(1-eta) + self.AT*eta
+        self.CS = self.oCS*(1-eta) + self.CS*eta
+        self.CT = self.oCT*(1-eta) + self.CT*eta
+
+    def rollback(self):
+        self.AS, self.AT, self.CS, self.CT = self.oAS, self.oAT, self.oCS, self.oCT
+        self.updateParam()
+
+    def updateParam(self):
+        AS, AT, CS, CT, self.UDict = self.getParam(self.BA, self.BC, self.year)
+        self.oAS, self.oAT, self.oCS, self.oCT = self.AS, self.AT, self.CS, self.CT
+        self.AS, self.AT, self.CS, self.CT = AS, AT, CS, CT
         self.ASU, self.CSU = self.getUnlabeledS()
         self.graphU = self.getUnlabeledGraph()
+        self.gtInf = self.Infs[self.Infs['Year'] == self.year]
 
     def getUnlabeledGraph(self):
         UG = []
@@ -192,15 +249,14 @@ class OMNIProp:
         return np.dot(F,X)
 
 Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
-Eta = [0.4,0.25,0.5]
+Eta = [1,1,1]
 for x in range(3):
     print(Confs[x])
     omni = OMNIProp(Confs[x], lamda=1.0, eta=Eta[x])
     (AS,AT,CS,CT) = omni.run(2011,2015)
-
+    print('Using Eta = {0}'.format(omni.etas))
     data = {}
     for i in range(11):
-
         data['acceptNum_self_{0}'.format(i)] = AS[:,i].tolist()
         data['acceptNum_t_{0}'.format(i)] = AT[:,i].tolist()
         data['coAuthorNum_self_{0}'.format(i+1)] = CS[:,i].tolist()
@@ -209,4 +265,3 @@ for x in range(3):
     data['Author_Name'] = pd.Series([omni.pre.authorNameDict[x] for x in range(omni.N)])
     df = pd.DataFrame(data)
     df.to_pickle('OMNI_result_{0}.pkl'.format(omni.pre.confId))
-
