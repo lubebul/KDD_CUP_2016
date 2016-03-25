@@ -10,7 +10,7 @@ prob = []
 conf = []
 for confId in confs['Conference_ID'].values:
     tprob = []
-    omni_rst = pd.read_pickle('OMNI_result_{0}.pkl'.format(confId))
+    omni_rst = pd.read_pickle(join('result', 'OMNI_result_{0}.pkl'.format(confId)))
     for affId in aff['Affiliation_ID'].values:
         affScore = 0.0
         authors = aca[aca['Affiliation_ID'] == affId]['Author_ID']

@@ -60,7 +60,7 @@ class PrepareGraph:
             acceptLabel[i,c] = 1
         return (acceptLabel, coNumLabel)
 
-    def plotGraph(self, graph):
+    def plotGraph(self, graph, outfile):
         G = snap.TUNGraph.New()
         for i in range(self.N):
             G.AddNode(i)
@@ -71,7 +71,7 @@ class PrepareGraph:
                 for x in range(1,int(graph[i,j])):
                     G.AddEdge(i,j)
             S.AddDat(i, self.authorNameDict[i])
-        snap.DrawGViz(G, snap.gvlDot, "co-author.gif", "Graph", S)
+        snap.DrawGViz(G, snap.gvlDot, outfile, "Graph", S)
         
 class OMNIProp:
     def __init__(self, confName, lamda, eta):
@@ -175,10 +175,10 @@ class OMNIProp:
             # print(np.linalg.norm(upper/down-T[j,:]))
             TT[j,:] = upper/down
         return TT
-        
+
 Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
 for confName in Confs:
-    omni = OMNIProp(confName, lamda=1.0, eta=0.5)
+    omni = OMNIProp(confName, lamda=1.0, eta=0.3)
     (AS,AT,CS,CT) = omni.run(2011,2015)
 
     data = {}
@@ -191,3 +191,9 @@ for confName in Confs:
     data['Author_Name'] = pd.Series([omni.pre.authorNameDict[x] for x in range(omni.N)])
     df = pd.DataFrame(data)
     df.to_pickle('OMNI_result_{0}.pkl'.format(omni.pre.confId))
+
+# plot graph
+# Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
+# for confName in Confs:
+#     omni = OMNIProp(confName, lamda=1.0, eta=0.3)
+#     omni.pre.plotGraph(omni.graph, '{0}.gif'.format(confName))
