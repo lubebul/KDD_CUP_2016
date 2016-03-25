@@ -1,3 +1,4 @@
+from scipy import stats
 import numpy as np
 import pandas as pd
 from os.path import join
@@ -81,38 +82,39 @@ class OMNIProp:
         self.genPrior()
 
     def run(self, st_year, ed_year):
-        cSum = 1
         for year in range(st_year,ed_year+1):
-            self.lamda = self.lamda * (year-st_year+1) / cSum
             print('[{0} Year]'.format(year))
             if year == st_year:
                 self.initParam(year)
             else:
                 self.updateParam(year)
             self.prop()
-            cSum += year-st_year+2
         return (self.AS, self.AT, self.CS, self.CT)
 
-    def genLabeledDict(self, ALabel):
-        return {i: True if ALabel[i,0] == 0 else False for i in range(self.N)}
+    def genLabeledDict(self, ALabel, CLabel):
+        ALabelDict, CLabelDict = {}, {}
+        for i in range(self.N):
+            ALabelDict[i] = True if ALabel[i,0] == 0 else False
+            CLabelDict[i] = True if sum(CLabel[i,:]) > 0 else False
+        return (ALabelDict, CLabelDict)
 
     def prop(self):
         # AcceptNumLabel
         diff = 1
         while diff > 1e-5:
-            AT = self.iterateT(self.AS, self.BA)
-            AS, ASU = self.iterateS(self.AS, self.AT, self.BA)
-            diff = np.linalg.norm(AT-self.AT) + np.linalg.norm(ASU-self.ASU)
-            self.AT, self.AS, self.ASU = AT, AS, ASU
-            # print('acceptLabel iter diff={0}'.format(diff))
+            AT = self.iterateT(self.ALabel, self.ADict, self.AS, self.AT, self.BA)
+            AS = self.iterateS(self.ALabel, self.ADict, self.AS, self.AT, self.BA)
+            diff = np.linalg.norm(AT-self.AT) + np.linalg.norm(AS-self.AS)
+            self.AT, self.AS = AT, AS
+            print('acceptLabel iter diff={0}'.format(diff))
         # CoAuthorNumLabel
         diff = 1
         while diff > 1e-5:
-            CT = self.iterateT(self.CS, self.BC)
-            CS, CSU = self.iterateS(self.CS, self.CT, self.BC)
-            diff = np.linalg.norm(CT-self.CT) + np.linalg.norm(CSU-self.CSU)
-            self.CT, self.CS, self.CSU = CT, CS, CSU
-            # print('coAuthorLabel iter diff={0}'.format(diff))
+            CT = self.iterateT(self.CLabel, self.CDict, self.CS, self.CT, self.BC)
+            CS = self.iterateS(self.CLabel, self.CDict, self.CS, self.CT, self.BC)
+            diff = np.linalg.norm(CT-self.CT) + np.linalg.norm(CS-self.CS)
+            self.CT, self.CS = CT, CS
+            print('coAuthorLabel iter diff={0}'.format(diff))
 
     def genPrior(self): # avg (per year)
         s, t = np.array([0.0 for x in range(11)]), np.array([0.0 for x in range(11)])
@@ -127,86 +129,71 @@ class OMNIProp:
         self.BA = s # prior for AcceptNumLabel
         self.BC = t # prior for CoNumLabel
 
-    def getUnlabeledS(self):
-        ASU, CSU = [], []
-        for i in range(len(self.UDict)):
-            ASU.append(self.AS[self.UDict[i],:])
-            CSU.append(self.CS[self.UDict[i],:])
-        return ASU, CSU
-
-    def updateUnlabeledS(self, S, SU):
-        SS = S.copy()
-        for i in range(len(self.UDict)):
-            SS[self.UDict[i],:] = SU[i,:]
-        return SS
-
     def initParam(self, year):
-        self.AS, self.AT, self.CS, self.CT, self.UDict = self.getParam(self.BA, self.BC, year)
-        self.ASU, self.CSU = self.getUnlabeledS()
-        self.graphU = self.getUnlabeledGraph()
+        self.AS, self.AT, self.CS, self.CT = self.getParam(self.BA, self.BC, year)
 
     def updateParam(self, year):
-        AS, AT, CS, CT, self.UDict = self.getParam(self.BA, self.BC, year)
+        AS, AT, CS, CT = self.getParam(self.BA, self.BC, year)
         self.AS = self.AS*(1-self.eta) + AS*self.eta
         self.AT = self.AT*(1-self.eta) + AT*self.eta
         self.CS = self.CS*(1-self.eta) + CS*self.eta
         self.CT = self.CT*(1-self.eta) + CT*self.eta
-        self.ASU, self.CSU = self.getUnlabeledS()
-        self.graphU = self.getUnlabeledGraph()
-
-    def getUnlabeledGraph(self):
-        UG = []
-        for i in range(len(self.UDict)):
-            UG.append(self.graph[self.UDict[i],:])
-        return np.array(UG)
 
     def getParam(self, BA, BC, year):
         AT, CT = np.array([BA for x in range(self.N)]), np.array([BC for x in range(self.N)])
         self.ALabel, self.CLabel = self.pre.genLabel(year=year)
-        self.Dict = self.genLabeledDict(self.ALabel)
-        UDict = {}
+        self.ADict, self.CDict = self.genLabeledDict(self.ALabel, self.CLabel)
         AS, CS = [], []
         for i in range(self.N):
-            if not self.Dict[i]:
-                UDict[len(UDict)] = i
-                AS.append(BA)
-                CS.append(BC)
-            else:
-                AS.append(self.ALabel[i,:])
-                CS.append(self.CLabel[i,:])
+            AS.append(self.ALabel[i,:] if self.ADict[i] else BA)
+            CS.append(self.CLabel[i,:] if self.CDict[i] else BC)
         AS = np.array(AS)
         CS = np.array(CS)
-        return (AS, AT, CS, CT, UDict)
+        return (AS, AT, CS, CT)
 
-    def iterateS(self, S, T, B): # only update unlabeled points
+    def iterateS(self, label, labelDict, S, T, B): # only update unlabeled points
         # S_ik = (sum_j(A_ij*T_jk) + lamda*B_k) / (sum_j(A_ij) + lamda)
-        DU = np.diag(np.array(1.0/(self.lamda+self.graphU.sum(1))))
-        X = np.dot(self.graphU, T) + self.lamda * (np.ones((len(self.UDict), 1)) * np.asmatrix(B))
-        SU = np.dot(DU, X)
-        return (self.updateUnlabeledS(S, SU), SU)
+        SS = S.copy()
+        for i in range(self.N):
+            if labelDict[i]:
+                continue
+            upper, down = np.array([0.0 for x in range(11)]), np.array([0.0 for x in range(11)])
+            for j in range(self.N): # if adjecent
+                upper += np.array([self.graph[i,j]*T[j,k]+self.lamda*B[k] for k in range(11)])
+                down += np.array([self.graph[i,j]+self.lamda for k in range(11)])
+            SS[i,:] = upper/down
+        return SS
         
-    def iterateT(self, S, B):
+    def iterateT(self, label, labelDict, S, T, B):
         # T_jk = (sum_i(A_ij*S_ik) + lamda*B_k) / (sum_i(A_ij) + lamda)
-        F = np.diag(np.array(1.0/(self.lamda+self.graph.sum(0))))
-        X = np.dot(np.transpose(self.graph), S) + self.lamda * (np.ones((self.N, 1)) * np.asmatrix(B))
-        return np.dot(F,X)
+        TT = T.copy()
+        for j in range(self.N):
+            upper, down = np.array([0.0 for x in range(11)]), np.array([0.0 for x in range(11)])
+            for i in range(self.N):
+                upper += np.array([self.graph[i,j]*S[i,k]+self.lamda*B[k] for k in range(11)])
+                down += np.array([self.graph[i,j]+self.lamda for k in range(11)])
+            # print(np.linalg.norm(upper/down-T[j,:]))
+            TT[j,:] = upper/down
+        return TT
 
+# Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
+# for confName in Confs:
+#     omni = OMNIProp(confName, lamda=1.0, eta=0.3)
+#     (AS,AT,CS,CT) = omni.run(2011,2015)
+
+#     data = {}
+#     for i in range(11):
+#         data['acceptNum_self_{0}'.format(i)] = AS[:,i]
+#         data['acceptNum_t_{0}'.format(i)] = AT[:,i]
+#         data['coAuthorNum_self_{0}'.format(i+1)] = CS[:,i]
+#         data['coAuthorNum_t_{0}'.format(i+1)] = CT[:,i]
+#     data['Author_ID'] = pd.Series([omni.pre.authorIdDict[x] for x in range(omni.N)])
+#     data['Author_Name'] = pd.Series([omni.pre.authorNameDict[x] for x in range(omni.N)])
+#     df = pd.DataFrame(data)
+#     df.to_pickle('OMNI_result_{0}.pkl'.format(omni.pre.confId))
+
+# plot graph
 Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
-Eta = [1,1,1]
-for x in range(3):
-    print(Confs[x])
-    omni = OMNIProp(Confs[x], lamda=1.0, eta=Eta[x])
-    (AS,AT,CS,CT) = omni.run(2011,2015)
-
-    data = {}
-    for i in range(11):
-
-        data['acceptNum_self_{0}'.format(i)] = AS[:,i].tolist()
-        data['acceptNum_t_{0}'.format(i)] = AT[:,i].tolist()
-        data['coAuthorNum_self_{0}'.format(i+1)] = CS[:,i].tolist()
-        data['coAuthorNum_t_{0}'.format(i+1)] = CT[:,i].tolist()
-    data['Author_ID'] = pd.Series([omni.pre.authorIdDict[x] for x in range(omni.N)])
-    data['Author_Name'] = pd.Series([omni.pre.authorNameDict[x] for x in range(omni.N)])
-    df = pd.DataFrame(data)
-    df.to_pickle('OMNI_result_{0}.pkl'.format(omni.pre.confId))
-
+for confName in Confs:
+    omni = OMNIProp(confName, lamda=1.0, eta=0.3)
+    omni.pre.plotGraph(omni.graph, '{0}.gif'.format(confName))
