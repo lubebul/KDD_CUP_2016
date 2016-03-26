@@ -34,7 +34,6 @@ class PrepareGraph:
 
     def genGraph(self): # generating co-author graph
         graph = np.zeros((self.N, self.N))
-        # pick papers at specified year
         data = self.data
         for paperId in data['Paper_ID'].unique():
             authors = data[data['Paper_ID'] == paperId]['Author_ID'].values
@@ -88,7 +87,7 @@ class OMNIProp:
         self.getGroundTruthInfluence()
         self.etas = []
 
-    def run(self, st_year, ed_year):
+    def run(self, st_year, ed_year, Eta=None):
         for year in range(st_year,ed_year+1):
             self.year = year
             print('[{0} Year]'.format(year))
@@ -97,7 +96,12 @@ class OMNIProp:
                 self.prop()
             else:
                 self.updateParam()
-                eta = self.findBestProp()
+                if Eta[year-st_year-1] is None:
+                    eta = self.findBestProp()
+                else:
+                    eta = Eta[year-st_year-1]
+                    self.updateEta(Eta[year-st_year-1])
+                    self.prop()
                 self.etas.append(eta)
         return (self.AS, self.AT, self.CS, self.CT)
 
@@ -143,7 +147,6 @@ class OMNIProp:
             AS, ASU = self.iterateS(self.AS, self.AT, self.BA)
             diff = np.linalg.norm(AT-self.AT) + np.linalg.norm(ASU-self.ASU)
             self.AT, self.AS, self.ASU = AT, AS, ASU
-            # print('acceptLabel iter diff={0}'.format(diff))
         # CoAuthorNumLabel
         diff = 1
         while diff > 1e-6:
@@ -151,7 +154,6 @@ class OMNIProp:
             CS, CSU = self.iterateS(self.CS, self.CT, self.BC)
             diff = np.linalg.norm(CT-self.CT) + np.linalg.norm(CSU-self.CSU)
             self.CT, self.CS, self.CSU = CT, CS, CSU
-            # print('coAuthorLabel iter diff={0}'.format(diff))
 
     def genLabeledDict(self, ALabel):
         return {i: True if ALabel[i,0] == 0 else False for i in range(self.N)}
@@ -189,9 +191,11 @@ class OMNIProp:
 
     def initParam(self):
         self.AS, self.AT, self.CS, self.CT, self.UDict = self.getParam(self.BA, self.BC, self.year)
+        self.oAS, self.oAT, self.oCS, self.oCT = self.AT.copy(), self.AT.copy(), self.CT.copy(), self.CT.copy()
         self.ASU, self.CSU = self.getUnlabeledS()
         self.graphU = self.getUnlabeledGraph()
         self.gtInf = self.Infs[self.Infs['Year'] == self.year]
+        self.updateEta(self.eta)
 
     def updateEta(self, eta):
         self.AS = self.oAS*(1-eta) + self.AS*eta
@@ -249,11 +253,13 @@ class OMNIProp:
         return np.dot(F,X)
 
 Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
-Eta = [1,1,1]
+Eta = [0.7,1,0.8]
+hy = [2.0/3,3.0/6,4.0/10,5.0/15]
+Etas = np.array([[None,hy[1],None,hy[0]],[hy[1],None,hy[0],None],[0.8571428571428571, 0.8571428571428571, 0.14285714285714285, 0.8571428571428571]])
 for x in range(3):
     print(Confs[x])
     omni = OMNIProp(Confs[x], lamda=1.0, eta=Eta[x])
-    (AS,AT,CS,CT) = omni.run(2011,2015)
+    (AS,AT,CS,CT) = omni.run(2011,2015,Eta=Etas[x,:])
     print('Using Eta = {0}'.format(omni.etas))
     data = {}
     for i in range(11):
@@ -264,4 +270,4 @@ for x in range(3):
     data['Author_ID'] = pd.Series([omni.pre.authorIdDict[x] for x in range(omni.N)])
     data['Author_Name'] = pd.Series([omni.pre.authorNameDict[x] for x in range(omni.N)])
     df = pd.DataFrame(data)
-    df.to_pickle('OMNI_result_{0}.pkl'.format(omni.pre.confId))
+    df.to_pickle(join('cheat', 'OMNI_result_{0}.pkl'.format(omni.pre.confId)))
