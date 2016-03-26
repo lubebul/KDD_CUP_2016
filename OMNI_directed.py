@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from os.path import join
 import snap
+import matplotlib.pyplot as plt
 
 class PrepareGraph:
     def __init__(self, ConfName):
@@ -40,6 +41,21 @@ class PrepareGraph:
             for i in range(0, len(authors)): # graph
                 for j in range(i+1, len(authors)):
                     graph[self.authorDict[authors[i]], self.authorDict[authors[j]]] += 1
+                    graph[self.authorDict[authors[j]], self.authorDict[authors[i]]] += 1
+        # get bighead
+        acNum = {x:0 for x in range(self.N)}
+        for paperId in data['Paper_ID'].unique():
+            authors = data[data['Paper_ID'] == paperId]['Author_ID'].values
+            for i in range(0, len(authors)):
+                acNum[self.authorDict[authors[i]]] += 1
+        th = 1
+        for paperId in data['Paper_ID'].unique():
+            authors = data[data['Paper_ID'] == paperId]['Author_ID'].values
+            for i in range(0, len(authors)): # graph
+                if acNum[self.authorDict[authors[i]]] > th:
+                    for j in range(i+1, len(authors)):
+                        if acNum[self.authorDict[authors[j]]] <= th:
+                            graph[self.authorDict[authors[i]], self.authorDict[authors[j]]] = 0
         return graph
 
     def genLabel(self, year=None):
@@ -86,6 +102,7 @@ class OMNIProp:
         self.genPrior()
         self.getGroundTruthInfluence()
         self.etas = []
+        self.gtScore = None
 
     def run(self, st_year, ed_year, Eta=None):
         for year in range(st_year,ed_year+1):
@@ -106,7 +123,7 @@ class OMNIProp:
         return (self.AS, self.AT, self.CS, self.CT)
 
     def findBestProp(self):
-        Etas = [0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8]
+        Etas = [0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95]
         meta, merror = None, None
         for eta in Etas:
             self.updateEta(eta)
@@ -124,18 +141,19 @@ class OMNIProp:
         return meta
 
     def calcError(self):
-        affMap, gtScore = {}, []
-        for aff in set(self.pre.AuthorAffiliationDict.values()):
-            affMap[aff] = len(affMap)
-            gtScore.append(self.gtInf[self.gtInf['Affiliation_ID'] == aff]['Influence'].iloc[0])
-        gtScore, score = np.array(gtScore), np.zeros(len(affMap))
+        gtScore = np.zeros(len(self.affMap)) if self.gtScore is None else self.gtScore
+        for k,v in self.affMap.items():
+            gtScore[v] += self.gtInf[self.gtInf['Affiliation_ID'] == k]['Influence'].iloc[0] # accumulate
+            # gtScore[v] = self.gtInf[self.gtInf['Affiliation_ID'] == k]['Influence'].iloc[0] # per year
+        self.gtScore = gtScore
+        score = np.zeros(len(self.affMap))
         for i in range(self.N):
             A, C = 0.0, 0.0
             for j in range(11):
                 A += self.AS[i,j]*i
                 C += self.CS[i,j]*(1.0/(j+1))
-            score[affMap[self.pre.AuthorAffiliationDict[self.pre.authorIdDict[i]]]] += A*C
-        diff = gtScore-score
+            score[self.affMap[self.pre.AuthorAffiliationDict[self.pre.authorIdDict[i]]]] += A*C
+        diff = gtScore/sum(gtScore)-score/sum(score)
         error = np.dot(diff,diff)
         return error
         
@@ -162,6 +180,10 @@ class OMNIProp:
         Infs = pd.read_pickle(join('pkl', 'Influence.pkl'))
         Infs = Infs[Infs['Conference_ID'] == self.pre.confId]
         self.Infs = Infs
+        affMap = {}
+        for aff in set(self.pre.AuthorAffiliationDict.values()):
+            affMap[aff] = len(affMap)
+        self.affMap = affMap
 
     def genPrior(self): # avg (per year)
         s, t = np.array([0.0 for x in range(11)]), np.array([0.0 for x in range(11)])
@@ -253,12 +275,14 @@ class OMNIProp:
         return np.dot(F,X)
 
 Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
-Eta = [0.7,1,0.8]
+Eta = [1,1,1]
+Lamda = [4,5,1.5]
 hy = [2.0/3,3.0/6,4.0/10,5.0/15]
-Etas = np.array([[None,hy[1],None,hy[0]],[hy[1],None,hy[0],None],[0.8571428571428571, 0.8571428571428571, 0.14285714285714285, 0.8571428571428571]])
+c3 = [0.8571428571428571, 0.8571428571428571, 0.14285714285714285, 0.8571428571428571]
+Etas = np.array([[None,None,None,None],[None,None,None,None],[None,None,None,None]])
 for x in range(3):
     print(Confs[x])
-    omni = OMNIProp(Confs[x], lamda=1.0, eta=Eta[x])
+    omni = OMNIProp(Confs[x], lamda=Lamda[x], eta=Eta[x])
     (AS,AT,CS,CT) = omni.run(2011,2015,Eta=Etas[x,:])
     print('Using Eta = {0}'.format(omni.etas))
     data = {}
@@ -270,4 +294,4 @@ for x in range(3):
     data['Author_ID'] = pd.Series([omni.pre.authorIdDict[x] for x in range(omni.N)])
     data['Author_Name'] = pd.Series([omni.pre.authorNameDict[x] for x in range(omni.N)])
     df = pd.DataFrame(data)
-    df.to_pickle(join('cheat', 'OMNI_result_{0}.pkl'.format(omni.pre.confId)))
+    df.to_pickle(join('directed', 'OMNI_result_{0}.pkl'.format(omni.pre.confId)))
