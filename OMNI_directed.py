@@ -81,13 +81,13 @@ class PrepareGraph:
         return (acceptLabel, coNumLabel)
 
     def plotGraph(self, graph, outfile):
-        G = snap.TUNGraph.New()
+        G = snap.TNGraph.New()
         for i in range(self.N):
             G.AddNode(i)
         # add name to nodes
         S = snap.TIntStrH()
         for i in range(self.N):
-            for j in range(i+1, self.N):
+            for j in range(self.N):
                 for x in range(0,int(graph[i,j])):
                     G.AddEdge(i,j)
             S.AddDat(i, self.authorNameDict[i])
@@ -160,14 +160,14 @@ class OMNIProp:
     def prop(self):
         # AcceptNumLabel
         diff = 1
-        while diff > 1e-5:
+        while diff > 1e-7:
             AT = self.iterateT(self.AS, self.BA)
             AS, ASU = self.iterateS(self.AS, self.AT, self.BA)
             diff = np.linalg.norm(AT-self.AT) + np.linalg.norm(ASU-self.ASU)
             self.AT, self.AS, self.ASU = AT, AS, ASU
         # CoAuthorNumLabel
         diff = 1
-        while diff > 1e-6:
+        while diff > 1e-7:
             CT = self.iterateT(self.CS, self.BC)
             CS, CSU = self.iterateS(self.CS, self.CT, self.BC)
             diff = np.linalg.norm(CT-self.CT) + np.linalg.norm(CSU-self.CSU)
@@ -282,7 +282,7 @@ c3 = [0.8571428571428571, 0.8571428571428571, 0.14285714285714285, 0.85714285714
 Etas = np.array([[None,None,None,None],[None,None,None,None],[None,None,None,None]])
 for x in range(3):
     print(Confs[x])
-    omni = OMNIProp(Confs[x], lamda=Lamda[x], eta=Eta[x])
+    omni = OMNIProp(Confs[x], lamda=Lamda[x], eta=Eta[x])    
     (AS,AT,CS,CT) = omni.run(2011,2015,Eta=Etas[x,:])
     print('Using Eta = {0}'.format(omni.etas))
     data = {}
