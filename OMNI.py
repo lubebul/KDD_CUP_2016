@@ -17,12 +17,13 @@ class PrepareGraph:
         authorNameDict = {}
         authorIdDict = {}
         author = pd.read_pickle(join('pkl', 'Authors.pkl'))
+        authors = set(author['Author_ID'].values)
         for idx, row in self.data.iterrows():
             authorId = row['Author_ID']
             if authorId not in authorDict.keys():
                 aid = len(authorDict)
                 authorDict[authorId] = aid
-                authorNameDict[aid] = author[author['Author_ID'] == authorId]['Author_Name'].iloc[0]
+                authorNameDict[aid] = author[author['Author_ID'] == authorId]['Author_Name'].iloc[0] if authorId in authors else 'Unknown'
                 authorIdDict[aid] = authorId
         return (authorDict, authorNameDict, authorIdDict)
 
@@ -191,9 +192,9 @@ class OMNIProp:
         X = np.dot(np.transpose(self.graph), S) + self.lamda * (np.ones((self.N, 1)) * np.asmatrix(B))
         return np.dot(F,X)
 
-Confs = ['SIGIR', 'SIGMOD', 'SIGCOMM']
+Confs = ['ICML', 'KDD']
 Eta = [0.4,0.25,0.5]
-for x in range(3):
+for x in range(len(Confs)):
     print(Confs[x])
     omni = OMNIProp(Confs[x], lamda=1.0, eta=Eta[x])
     (AS,AT,CS,CT) = omni.run(2011,2015)
