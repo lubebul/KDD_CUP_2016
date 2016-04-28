@@ -201,7 +201,6 @@ for x in range(len(Confs)):
 
     data = {}
     for i in range(11):
-
         data['acceptNum_self_{0}'.format(i)] = AS[:,i].tolist()
         data['acceptNum_t_{0}'.format(i)] = AT[:,i].tolist()
         data['coAuthorNum_self_{0}'.format(i+1)] = CS[:,i].tolist()

@@ -156,6 +156,31 @@ def proc_PA(DF, fname, cur, end):
             DF['Paper_Rank'] += rk
             print('c={0}, KDD_PA size = {1}'.format(c, len(DF['Paper_ID'])))
 
+# filter Papers
+def proc_Keyword(DF, fname, cur, end):
+    KDD_PA = pd.read_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
+    # use set to speedup lookup operation
+    paperId = set(KDD_PA['Paper_ID'].values)
+    with open(fname, 'r') as f:
+        f.seek(cur)
+        data = f.read(end-cur)
+    paperIds = re.findall('(.*)\t.*\t.*\n', data)
+    keywords = re.findall('.*\t(.*)\t.*\n', data)
+    fieldIds = re.findall('.*\t.*\t(.*)\n', data)
+    c = 0
+    pId, kw, fid = [], [], []
+    for i in range(len(paperIds)):
+        if paperIds[i] in paperId:
+            pId += [paperIds[i]]
+            kw += [keywords[i]]
+            fid += [fieldIds[i]]
+            c += 1
+    if c > 0:
+        with LOCK:
+            DF['Paper_ID'] += pId
+            DF['Keyword_Name'] += kw
+            DF['Field_ID'] += fid
+            print('c={0}, PaperKeyword size = {1}'.format(c, len(DF['Paper_ID'])))
 
 LOCK = mp.Lock()
 # filter PaperAuthorAffiliations
@@ -171,5 +196,9 @@ LOCK = mp.Lock()
 # KDD_PA.to_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
 
 # filter authors
-KDD_A = filter('Authors.txt', ['Author_ID', 'Author_Name'], proc_Author)
-KDD_A.to_pickle(join(PKL_PATH, 'Authors.pkl'))
+# KDD_A = filter('Authors.txt', ['Author_ID', 'Author_Name'], proc_Author)
+# KDD_A.to_pickle(join(PKL_PATH, 'Authors.pkl'))
+
+# keyword vector
+Paper_Keyword = filter('PaperKeywords.txt', ['Paper_ID', 'Keyword_Name', 'Field_ID'], proc_Keyword)
+Paper_Keyword.to_pickle(join(PKL_PATH, 'PaperKeywords.pkl'))

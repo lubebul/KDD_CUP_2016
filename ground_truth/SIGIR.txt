@@ -1,0 +1,185 @@
+How Much Novelty is Relevant? It Depends on your Curiosity.
+Pengfei Zhao (Hong Kong University of Science and Technology), Dik Lun Lee (Hong Kong University of Science and Technology).
+
+Fast Matrix Factorization for Online Recommendation with Implicit Feedback.
+Xiangnan He (National University of Singapore).
+
+Transfer Learning for Cross-Lingual Sentiment Classification with Weakly Shared Deep Neural Networks.
+Guangyou Zhou (Chinese Academy of Sciences), Xiangji Huang (York University), Yin Zhou (Microsoft).
+
+On Effective Personalized Music Retrieval via Exploring Online User Behaviors.
+Zhuyong Cheng (Singapore Management University), Jialie Shen (Singapore Management University), Steven Hoi (Singapore Management University).
+
+Statistical Significance, Power, and Sample Sizes: A Systematic Review of SIGIR and TOIS, 2006-2015.
+Tetsuya Sakai (Waseda University).
+
+Composite Correlation Quantization for Efficient Multimodal Retrieval.
+Mingsheng Long (Tsinghua University), Yue Cao (Tsinghua University), Jianmin Wang (Tsinghua University), Philip Yu (University of Illinois, Chicago).
+
+Interleaved Evaluation for Retrospective Summarization and Prospective Notification on Document Streams.
+Xin Qian (University of Waterloo), Jimmy Lin (University of Waterloo), Adam Roegiest (University of Waterloo).
+
+Query to Knowledge: Unsupervised Entity Extraction from Shopping Queries using Adaptor Grammars.
+Ke Zhai (Yahoo), Zornitsa Kozareva (Yahoo), Yuening Hu (Yahoo), Qi Li (Yahoo), Weiwei Guo (Yahoo).
+
+That’s Not My Question: Learning to Weight Unmatched Terms in CQA Vertical Search.
+Boaz Petersil (Technion), Avihai Mejer (Yahoo), Idan Szpektor (Yahoo), Koby Crammer (Technion).
+
+Evaluating Search Result Diversity using Intent Hierarchies.
+Xiaojie Wang (Renmin University of China), Zhicheng Dou (Renmin University of China), Tetsuya Sakai (Waseda University), Ji-Rong Wen (Renmin University of China).
+
+Modeling Document Novelty with Neural Tensor Network for Search Result Diversification.
+Long Xia (Institute of Computing Technology), Jun Xu (Institute of Computing Technology), Yanyan Lan (Institute of Computing Technology), Jiafeng Guo (Institute of Computing Technology), Xueqi Cheng (Institute of Computing Technology).
+
+Topic Modeling for Short Texts with Auxiliary Word Embeddings.
+Haoran Wang (Wuhan University), Chenliang Li (Wuhan University), Zhiqian Zhang (Wuhan University), Aixin Sun (Nanyang Technological University), Zongyang Ma (Nanyang Technological Univerisity).
+
+Click-based Hot Fixes for Underperforming Torso Queries.
+Masrour Zoghi (University of Amsterdam), Tomáš Tunys (Czech Technical University), Lihong Li (Microsoft), Damien Jose (Microsoft), Junyan Chen (Microsoft), Chun Ming Chin (Microsoft), Maarten de Rijke (University of Amsterdam).
+
+An Optimization Framework for Remapping and Reweighting Noisy Relevance Labels.
+Yury Ustinovskiy (Yandex), Valentina Fedorova (Yandex), Gleb Gusev (Yandex), Pavel Serdyukov (Yandex).
+
+Discrete Collaborative Filtering.
+Hanwang Zhang (National University of Singapore), Fumin Shen (UESTC), Wei Liu (Didi Research), Xiangnan He (National University of Singapore),Huanbo Luan (Tsinghua University), Chua Tat-Seng (National University of Singapore).
+
+Semantification of Identifiers in Mathematics for Better Math Information Retrieval.
+Moritz Schubotz (TU Berlin), Alexey Grigoriev (TU Berlin), Marcus Leich (TU Berlin), Howard S Cohl (NIST), Norman Meuschke (University of Konstanz), Bela Gipp (University of Konstanz), Abdou S Youssef (NIST), Volker Markl (TU Berlin).
+
+A Context-aware Time Model for Web Search.
+Alexey Borisov (University of Amsterdam), Ilya Markov (University of Amsterdam), Maarten de Rijke (University of Amsterdam), Pavel Serdyukov (Yandex).
+
+Predicting User Engagement with Direct Displays in Web Search Using Mouse Cursor Features.
+Ioannis Arapakis (Eurecat), Luis A. Leiva (Universitat Politècnica de València).
+
+Novelty based Ranking of Human Answers for Community Questions.
+Adi Omari (Yahoo), David Carmel (Yahoo), Oleg Rokhlenko (Yahoo), Idan Szpektor (Yahoo).
+
+When does Relevance Mean Usefulness and User Satisfaction in Web Search?
+Jiaxin Mao (Tsinghua University), Yiqun Liu (Tsinghua University), Ke Zhou (Yahoo), Jian-Yun Nie (University of Montreal), Min Zhang (Tsinghua University), Shaoping Ma (Tsinghua University).
+
+Document Retrieval Using Entity-Based Language Models.
+Hadas Raviv (Technion), Oren Kurland (Technion), David Carmel (Yahoo).
+
+Hierarchical Random Walk Inference in Knowledge Graphs.
+Qiao Liu (University of Electronic Science and Technology of China), Liuyi Jiang (University of Electronic Science and Technology of China), Minghao Han (University of Electronic Science and Technology of China), Yao Liu (University of Electronic Science and Technology of China), Zhiguang Qin (University of Electronic Science and Technology of China).
+
+Engineering Quality and Reliability in Technology-Assisted Review.
+Gordon V. Cormack (University of Waterloo), Maura R. Grossman (Wachtell, Lipton, Rosen & Katz).
+
+Risk-Sensitive Evaluation and Learning to Rank using Multiple Baselines.
+B. Taner Dincer (Muğla Sıtkı Koçman Üniversitesi), Craig Macdonald (University of Glasgow), Iadh Ounis (University of Glasgow).
+
+Multi-Stage Math Formula Search: Using Appearance-Based Similarity Metrics at Scale.
+Richard Zanibbi (Rochester Institute of Technology), Kenny Davila (Rochester Institute of Technology), Andrew Kane (University of Waterloo), Frank Tompa (University of Waterloo).
+
+Improved Caching Techniques for Large-scale Image Hosting Services.
+Xiao Bai (Yahoo), B. Barla Cambazoglu (Yahoo), Archie Russell (Yahoo).
+
+How Many Workers to Ask? Adaptive Exploration for Collecting High Quality Labels.
+Ittai Abraham (VMWare), Omar Alonso (Microsoft), Vasilis Kandylas (Microsoft), Rajesh Patel (Microsoft), Steven Shelford (Microsoft), Aleksandrs Slivkins (Microsoft).
+
+Fast First-Phase Candidate Generation for Cascading Rankers.
+Qi Wang (New York University), Constantinos Dimopoulos (New York University), Torsten Suel (New York University).
+
+Search Result Prefetching Using Cursor Movement.
+Fernando Diaz (Microsoft), Qi Guo (Microsoft), Ryen White (Microsoft).
+
+Predicting Search User Examination with Visual Saliency Information.
+Yiqun Liu (Tsinghua University), Zeyang Liu (Tsinghua University), Chao Wang (Tsinghua University), Jiaxin Mao (Tsinghua University), Meng Wang (Tsinghua University), Ke Zhou (Yahoo), Min Zhang (Tsinghua University), Shaoping Ma (Tsinghua University).
+
+Leveraging Context-Free Grammar for Efficient Inverted Index Compression.
+Zhaohua Zhang (Nankai University), Jiancong Tong (Nankai University), Haibing Huang (Nankai University), Jin Liang (Nankai University), Rebecca Stones (Nankai University), Gang Wang (Nankai University), Xiaoguang Liu (Nankai University).
+
+GeoBurst: Real-time Local Event Detection in Geo-tagged Tweet Stream.
+Chao Zhang (University of Illinois at Urbana-Champaign), Guangyu Zhou (University of Illinois at Urbana-Champaign), Quan Yuan (University of Illinois at Urbana-Champaign), Honglei Zhuang (University of Illinois at Urbana-Champaign), Yu Zheng (Microsoft), Lance Kaplan (US Army Research Lab), Shaowen Wang (University of Illinois at Urbana-Champaign), Jiawei Han (University of Illinois at Urbana-Champaign).
+
+A Comparison of Cache Blocking Methods for Fast Execution of Ensemble-based Score Computation.
+Xin Jin (University of California, Santa Barbara), Tao Yang (University of California, Santa Barbara), Xun Tang (University of California, Santa Barbara).
+
+Predicting User Satisfaction with Intelligent Assistants.
+Julia Kiseleva (Eindhoven University of Technology), Kyle Williams (Penn State), Ahmed Hassan (Microsoft), Aidan C. Crook (Microsoft), Imed Zitouni (Microsoft), Tasos Anastasakos (Microsoft).
+
+Explainable User Clustering in Short Text Streams.
+Yukun Zhao (Shandong University), Shangsong Liang (University College London), Zhaochun Ren (University of Amsterdam), Jun Ma (Shandong University), Emine Yilmaz (University College London), Maarten de Rijke (University of Amsterdam).
+
+Fast and Compact Hamming Distance Index.
+Simon Gog (Karlsruhe Institute of Technology), Rossano Venturini (University of Pisa).
+
+Going back in Time: An Investigation of Social Media Re-finding.
+Florian Meier (University of Regensburg), David Elsweiler (University of Regensburg).
+
+Searching by Talking: Analysis of Voice Queries on Mobile Web Search.
+Ido Guy (Yahoo).
+
+Event Digest: A Holistic View on Past Events.
+Arunav Mishra (Max Planck Institute for Informatics), Klaus Berberich (Max Planck Institute for Informatics).
+
+Self-Paced Cross-Modal Subspace Matching.
+Jian Liang (Chinese Academy of Sciences), Zhihang Li (Chinese Academy of Sciences), Dong Cao (Chinese Academy of Sciences), Ran He (Chinese Academy of Sciences), Jingdong Wang (Microsoft).
+
+Contextual Bandits in A Collaborative Environment.
+Qingyun Wu (University of Virginia), Huazheng Wang (University of Virginia), Quanquan Gu (University of Virginia), Hongning Wang (University of Virginia).
+
+Terms over LOAD: Leveraging Named Entities for Cross-Document Extraction and Summarization of Events.
+Andreas Spitz (Heidelberg University), Michael Gertz (Heidelberg University).
+
+A General Linear Mixed Models Approach to Study System Component Effects.
+Nicola Ferro (University of Padua), Gianmaria Silvello (University of Padua).
+
+Learning Query and Document Relevance from Web-scale Click Graph.
+Shan Jiang (University of Illinois), Yuening Hu (Yahoo), Changsung Kang (Yahoo), Tim Daly (Yahoo), Dawei Yin (Yahoo), Yi Chang (Yahoo).
+
+Leveraging User Interaction Signals for Web Image Search.
+Neil O’Hare (Yahoo), Paloma De Juan (Yahoo), Rossano Schifanella (University of Torino), Yunlong He (Yahoo), Dawei Yin (Yahoo), Yi Chang (Yahoo).
+
+R-Susceptibility: An IR-Centric Approach to Assessing Privacy Risks for Users in Online Communities.
+Joanna Biega (Max Planck Institute for Informatics), Krishna Gummadi (Max Planck Institute for Informatics), Ida Mele (University of Lugano), Dragan Milchevski (Max Planck Institute for Informatics), Christos Tryfonopoulos (University of Peloponnese), Gerhard Weikum (Max Planck Institute for Informatics)
+
+Understanding Information Need: an fMRI Study.
+Yashar Moshfeghi (University of Glasgow), Peter Triantafillou (University of Glasgow), Frank E. Pollick (University of Glasgow)
+
+Robust and Collective Entity Disambiguation through Semantic Embeddings.
+Stefan Zwicklbauer (Universität Passau), Christin Seifert (Universität Passau), Michael Granitzer (Universität Passau)
+
+When a Knowledge Base Is Not Enough: Question Answering over Knowledge Bases with External Text Data.
+Denis Savenkov (Emory University), Eugene Agichtein (Emory University)
+
+Learning to Rank with Selection Bias in Personal Search.
+Xuanhui Wang (Google), Michael Bendersky (Google), Donald Metzler (Google), Marc Najork (Google)
+
+Scalable Semantic Matching of Search Queries to Ads in Sponsored Search Advertising.
+Mihajlo Grbovic (Yahoo), Djuric Nemanja (Yahoo), Vladan Radosavljevic (Yahoo), Fabrizio Silvestri (Yahoo), Ricardo Baeza-Yates (Yahoo), Andrew Feng (Yahoo), Erik Ordentlich (Yahoo), Lee Yang (Yahoo), Gawin Owens (Yahoo)
+
+Learning for Efficient Supervised Query Expansion via Two-stage Feature Selection.
+Zhiwei Zhang (Purdue University)
+
+Generalized BROOF-L2R: A general framework for L2R based on Boosting and Random Forests.
+Clebson Sá (Universidade Federal de Minas), Daniel Sousa (Universidade Federal de Minas), Thiago Salles (Universidade Federal de Minas), Marcos Goncalves (Universidade Federal de Minas)
+
+User Behavior in Asynchronous Slow Search.
+Ryan Burton (University of Michigan), Kevyn Collins-Thompson (University of Michigan)
+
+Learning to Respond with Deep Neural Networks for Retrieval based Human-Computer Conversation System.
+Rui Yan (Baidu Inc.), Yiping Song (Baidu Inc.), Hua Wu (Baidu Inc.)
+
+A Sequential Decision Formulation of the Interface Card Model for Interactive IR.
+Yinan Zhang (University of Illinois at Urbana-Champaign), Cheng Xiang Zhai (University of Illinois at Urbana-Champaign)
+
+Retrieving Non-Redundant Questions to Summarize a Product Review.
+Mengwen Liu (Drexel University), Yi Fang (Santa Clara University), Dae Hoon Park (University of Illinois at Urbana-Champaign), Xiaohua Hu (Drexel University), Zhengtao Yu (Kunming University of Science and Technology)
+
+Parameterized Fielded Dependence Models for Ad-hoc Entity Retrieval from Knowledge Graphs.
+Fedor Nikolaev (Wayne State University), Alexander Kotov (Wayne State University), Nikita Zhiltsov (Kazan Federal University)
+
+ScentBar: A Query Suggestion Interface Visualizing the Amount of Missed Relevant Information for Intrinsically Diverse Search.
+Kazutoshi Umemoto (Kyoto University), Takehiro Yamamoto (Kyoto University), Katsumi Tanaka (Kyoto University)
+
+Bayesian Performance Comparison of Text Classifiers.
+Dell Zhang (Birkbeck College), Jun Wang (University College London), Emine Yilmaz (University College London), Xiaoling Wang (East China Normal University), Yuxin Zhou (East China Normal University)
+
+Collaborative Filtering Bandits.
+Shuai Li (University of Insubria), Alexandros Karatzoglou (Telefonica Research), Claudio Gentile (University of Insubria)
+
+Learning to Rank Features for Recommendation over Multiple Categories.
+Chen Xu (Tsinghua University)

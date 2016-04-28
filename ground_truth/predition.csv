@@ -1,0 +1,742 @@
+,Affiliation_ID,Score,Affiliation_Name
+673,4CE6FC2D,1.0,microsoft
+648,34DF872C,0.8459073154119946,university of amsterdam
+713,4F05DC4B,0.6060135917686872,yahoo
+484,0966B229,0.5550452059629547,university of illinois at urbana champaign
+298,05E79D01,0.4423451123192925,tsinghua university
+528,0A4ACFBD,0.35677713559084506,nanyang technological university
+506,09E3EE34,0.2730027637606382,national university of singapore
+25,00784876,0.2537925389603885,university of glasgow
+68,012E6F4E,0.1836639006873878,chinese academy of sciences
+230,0489A984,0.17484916782122034,zhejiang university
+460,08F7F83A,0.1747024670703145,emory university
+177,03839CF8,0.1613404082657277,yandex
+84,01776B6C,0.12539707016869914,university of massachusetts amherst
+463,090B77B3,0.1207397308312998,university of waterloo
+227,0477FFD3,0.11164441214361698,carnegie mellon university
+724,4FF45383,0.11097164020183327,ibm
+339,06CBEAA9,0.106293804277847,university of north carolina at chapel hill
+329,06918666,0.1061850018308717,universidade federal de minas gerais
+631,0D109F83,0.10510946464643448,purdue university
+205,03FD8454,0.08279880482557146,university of maryland college park
+558,0AE9651A,0.08006707002055148,shanghai jiao tong university
+674,4CF99586,0.06998577247961088,google
+71,0134B592,0.06979081669991087,peking university
+249,04F1BEA5,0.06699806768130029,rmit university
+515,0A0E755C,0.06165669976057068,city university of hong kong
+401,07CA5884,0.05589023480760915,georgia institute of technology
+294,05DCD65A,0.05262734752672786,delft university of technology
+67,012C9CDF,0.05235859022488528,florida international university
+213,043A55FE,0.05196495231502477,universite de montreal
+568,0B0DA3DC,0.05101979411229285,wayne state university
+580,0B46E8A6,0.05051393294964483,university of texas at arlington
+21,006329B3,0.04789815520921866,indian statistical institute
+402,07CB626B,0.04614572772333708,pennsylvania state university
+126,0259891E,0.04243170367770166,university of illinois at chicago
+390,078A8AE9,0.042054165043542466,university of science and technology of china
+103,01E46A0B,0.04155356860987624,university of new south wales
+143,02B09E25,0.04138206095589647,university college london
+375,0754B26A,0.041227864559821116,istituto di scienza e tecnologie dell informazione
+58,00FF56A8,0.041116055046214864,national taiwan university
+341,06CD3667,0.037398092364604285,leibniz university of hanover
+20,0056B275,0.034360419957591565,university of adelaide
+264,0532D181,0.03434947440575849,michigan state university
+566,0B08755E,0.034209054032945885,university of california santa cruz
+86,017C99DB,0.03307604384409265,fudan university
+54,00F9B76E,0.029880109486551686,hefei university of technology
+504,09E1988B,0.027421056078186585,university of melbourne
+146,02B554FC,0.026365775322236325,university of texas at san antonio
+384,07802943,0.025413764662221432,beijing institute of technology
+291,05DAB8C0,0.024999162535692,polytechnic institute of new york university
+534,0A63B3A3,0.02467535298887977,technion israel institute of technology
+441,08B17323,0.02460136183912568,vienna university of technology
+586,0B78A521,0.02424668781586758,york university
+274,056D3FC6,0.024194954290899136,texas a m university
+739,863BFDE1,0.02306253293450392,facebook
+379,0764F090,0.02290694663839437,university of copenhagen
+308,06194FDE,0.02285549721809222,rutgers university
+725,4FF7CE5C,0.0226787944802493,centrum wiskunde informatica
+489,09995E41,0.022580804521137417,university of freiburg
+151,02D4EDF8,0.02231028408217401,imperial college london
+299,05EDB3A0,0.022254662403880483,katholieke universiteit leuven
+589,0B845BA3,0.022254662403880483,university of trento
+539,0A97E0C1,0.02222613049784497,the chinese university of hong kong
+167,0352694C,0.02020557317985793,arizona state university
+337,06CB2E98,0.018305873210567283,twitter
+260,0527EA39,0.017248134878577317,university of delaware
+93,01A8C383,0.01682710625970846,university of michigan
+285,05B090CE,0.016789743432796756,university of california berkeley
+622,0C3BAC1F,0.016591031230354047,nankai university
+705,4E718DAA,0.016526315181841538,linkedin
+78,0154426A,0.01647170803792201,kyoto university
+473,09368EC9,0.016164458544029602,university of california santa barbara
+63,0112E226,0.016164458543886345,simon fraser university
+492,099D876D,0.016164458543886345,university of california los angeles
+569,0B185497,0.015955039192317024,lehigh university
+378,0762929E,0.015801019798920957,pohang university of science and technology
+349,06DE3FEB,0.01556475886467367,agency for science technology and research
+499,09DC92C5,0.015304813354770968,indiana university bloomington
+90,0190EC9A,0.01526447604864938,fx palo alto laboratory
+592,0B8B0D91,0.015241366608315859,utrecht university
+613,0C2AE079,0.015168445837911828,open university
+323,067461C8,0.01513720193224366,university of pisa
+189,03B6E7B2,0.01505603392833389,university of duisburg essen
+203,03FC4F79,0.014368240909370797,east china normal university
+47,00D956B2,0.014143901226044938,hong kong polytechnic university
+605,0BF77E37,0.014143901225901728,hong kong university of science and technology
+261,05282E0D,0.014143901225900556,university of texas at austin
+206,040F37A8,0.013939853253391615,universidade federal de goias
+243,04C30B43,0.01384903718399181,singapore management university
+120,022B685F,0.013744448555098902,nanjing university of science and technology
+178,0388650E,0.013001906429447771,indian institute of science
+202,03FC3F40,0.012762203202054128,chalmers university of technology
+456,08EF476D,0.012467717486380984,max planck society
+517,0A10A938,0.012388144461541848,bilkent university
+32,009779A9,0.012123343995906248,aalto university
+173,0368D319,0.01212334390793231,university of lugano
+443,08B22DAB,0.012123343907919342,indian institute of technology kharagpur
+560,0B003FA6,0.012123343907914806,georgetown university
+542,0AA2F1D8,0.012123343907914778,national university of distance education
+624,0C4400FF,0.012112352473712118,cornell university
+620,0C34AB7F,0.011801852206018952,norwegian university of science and technology
+732,862979F8,0.011476107657287809,tcl corporation
+393,07B10DCB,0.011460892264553574,university of udine
+284,05A55A03,0.011453473319197185,university of jyvaskyla
+119,0229448F,0.011453473319197185,university of california san diego
+94,01AE4F56,0.011127331201940241,qatar computing research institute
+526,0A398D80,0.011127331201940241,free university of bozen bolzano
+277,05776AD7,0.010134519053430852,saarland university
+407,07F892EC,0.010102786663255208,university of helsinki
+729,8623AC36,0.01010278660528995,telefonica
+366,0742D5C5,0.01010278658992897,louisiana state university
+335,06ACAD91,0.01010278658992897,northwestern university
+10,003BDEE2,0.01010278658992897,soochow university
+196,03CAFC05,0.010102786589928966,autonomous university of madrid
+334,069F11AE,0.009790669561938279,boston university
+116,021CC5D8,0.009551463701661513,eth zurich
+352,06F892B4,0.009293235502260523,tongji university
+576,0B3CDF24,0.009293235502260523,university of colorado boulder
+248,04F0A8A0,0.008989982736561966,beihang university
+621,0C37CBAD,0.008779697551644004,harbin institute of technology
+646,348EB203,0.008305629529513824,nanjing university
+4,0011EAC4,0.008287094494820148,university of southern california
+19,005237C4,0.008112546252995794,university of rochester
+91,01A17328,0.008082229271952424,dalian university of technology
+521,0A2510E5,0.008082229271943641,university of pittsburgh
+728,8620BB61,0.00808222927194322,walmart labs
+477,0948C934,0.008082229271943173,university of hildesheim
+618,0C33D1B1,0.008082229271943173,queen s university
+191,03BF901A,0.008082229271943173,federal university of amazonas
+617,0C309CF2,0.008082229271943173,university of macau
+427,085ADB71,0.0078685293309345,university of connecticut
+225,0474FB72,0.007791886568436302,rice university
+137,0294EAD4,0.00755114333121962,dalian maritime university
+555,0AD3BA36,0.00752693484037914,university of strathclyde
+185,039DB9B6,0.00752693484037914,university of regensburg
+74,01438A3B,0.00752693484037914,kazan federal university
+105,01EE4B98,0.00752693484037914,northumbria university
+122,023B9EF3,0.0073916665196823795,wuhan university
+295,05E1B1D9,0.0073524555035991345,university of edinburgh
+69,012F592B,0.007262479200640292,moscow state university
+290,05C86094,0.006976870217444775,stanford university
+523,0A296B1E,0.006973130570249674,pompeu fabra university
+552,0ACF7BFE,0.006938325188729221,university of erlangen nuremberg
+730,8626355D,0.006872224277549451,samsung
+211,04281A41,0.006816099085998115,university of chile
+240,04B5445A,0.006721176452062629,renmin university of china
+275,056EA0E2,0.006641495403568222,university of sheffield
+496,09B52E07,0.006503820618492149,tianjin university
+237,04AF010A,0.006289510448956363,columbia university
+148,02BCD1A8,0.006061671959293573,alibaba group
+293,05DBF710,0.006061671953958397,baidu
+422,08443C72,0.0060616719539573795,university of padua
+136,028F2298,0.0060616719539573795,dublin city university
+328,068E815A,0.0060616719539573795,university of essex
+708,4EC97A4B,0.006061671953957379,ebay
+633,0D57443D,0.006061671953957379,heidelberg university
+101,01DF6D2D,0.006061671953957379,kyungpook national university
+641,33865634,0.006061671953957379,weimar institute
+614,0C2C9DD2,0.006061671953957379,university of california irvine
+510,09F18F79,0.006061671953957379,university of tampere
+470,093304A4,0.006061671953957379,university of fribourg
+218,045716B5,0.005736353878948473,drexel university
+369,07454816,0.005734581363614355,utah state university
+578,0B46561F,0.005730639852182756,university of milan
+676,4D0FB79F,0.005730327143475071,commonwealth scientific and industrial research organisation
+468,092F5EFF,0.005726736659598592,shandong university
+348,06DA7DC2,0.005726736659598592,aalborg university copenhagen
+216,04496BAA,0.0054085183404845106,king abdullah university of science and technology
+309,0619822C,0.005099730782569178,karlsruhe institute of technology
+608,0C01DCFD,0.004984329200618314,university of washington
+387,07874D3C,0.004963595609287012,university of iowa
+353,0708D687,0.004898570017599456,hoffmann la roche
+602,0BC7337B,0.004691777904644911,national research council
+258,0507BBD7,0.004655024691514882,temple university
+458,08F452CF,0.0044879151511128396,university of electronic science and technology of china
+245,04C3E428,0.004434365673166816,mugla university
+292,05DBB954,0.004261853180831513,osaka university
+488,09989277,0.004172896438793463,queensland university of technology
+362,072620B4,0.004072847099473473,indraprastha institute of information technology
+338,06CBC4BA,0.004056273126497896,university of technology sydney
+498,09D7E4FA,0.004056273126497896,university of queensland
+33,009F903A,0.004045082075967126,university of santiago chile
+162,031EE95E,0.004041114636116543,ohio state university
+182,039459BF,0.0040411146359744755,polytechnic university of valencia
+61,01109E6D,0.004041114635972311,university of toulouse
+40,00C50601,0.004041114635971586,northeastern university
+302,05F5F76A,0.004041114635971586,brigham young university
+241,04BE3F72,0.004041114635971586,university of pennsylvania
+296,05E2161B,0.004041114635971586,university of caen lower normandy
+322,066F2C46,0.004041114635971586,university of lethbridge
+266,05364FE4,0.004041114635971586,xi an jiaotong university
+737,86366AC3,0.004041114635971586,nippon telegraph and telephone
+23,00725F06,0.003929259155182336,idiap research institute
+200,03EB6D7F,0.003224498953271376,wolfram research
+413,0810AAFA,0.003123934320969376,university of wisconsin madison
+391,07930A8B,0.00292846638807166,imt institute for advanced studies lucca
+327,068A7232,0.002674485512765843,canadian institute for advanced research
+426,08548E70,0.002671061677087506,beijing university of posts and telecommunications
+45,00D40E2B,0.002600381285889555,andres bello national university
+550,0ACED25B,0.0024662220384955953,donghua university
+65,0126039E,0.0023518811758968137,qualcomm
+361,07162905,0.002313968861833443,instituto superior tecnico
+575,0B3B54E4,0.00215935165269856,zynga
+415,081E3F30,0.0021118098553622893,harvard university
+395,07B99BFA,0.002081805025331229,university of sydney
+108,01F6ADD2,0.0020205573326510413,helsinki institute for information technology
+357,070DD774,0.002020557319664649,australian national university
+548,0AC9113B,0.002020557317999069,illinois institute of technology
+7,00243975,0.002020557317986353,max planck institute for software systems
+254,04FD6759,0.002020557317985805,university of michigan school of information
+153,02D828C1,0.002020557317985801,huazhong university of science and technology
+731,86263FDB,0.002020557317985801,tencent
+208,0413757D,0.002020557317985795,thomson reuters
+37,00BBEBAA,0.002020557317985793,texas tech university
+88,018A6121,0.002020557317985793,national tsing hua university
+512,09FD03AD,0.002020557317985793,colorado school of mines
+313,0626251D,0.002020557317985793,florida state university
+364,073B94B1,0.002020557317985793,inesc id
+582,0B4EC93C,0.002020557317985793,university of konstanz
+446,08BA2180,0.002020557317985793,university of kansas
+39,00BDF5D6,0.002020557317985793,university of orleans
+269,053FB310,0.002020557317985793,technical university of madrid
+733,862ADA3F,0.002020557317985793,huawei
+597,0BC0E906,0.002020557317985793,st francis xavier university
+315,062D596B,0.002020557317985793,university of california riverside
+106,01F164D0,0.002020557317985793,ghent university
+577,0B40411E,0.002020557317985793,national university of ireland galway
+306,0616AB9C,0.002020557317985793,university of north carolina at charlotte
+687,4D91A54A,0.002020557317985793,qatar airways
+49,00EE209B,0.002020557317985793,otsuma women s university
+139,0296D744,0.002020557317985793,university of southampton
+430,087095C7,0.002020557317985793,university of lisbon
+637,1F2989F0,0.002020557317985793,robert gordon university
+85,017889A7,0.002020557317985793,indian institute of technology madras
+223,046C3B83,0.0,lewis clark college
+222,04634070,0.0,national institute of advanced industrial science and technology
+215,043F7F1E,0.0,victoria university australia
+226,04756336,0.0,university of tokyo
+221,045D3373,0.0,language technologies institute
+214,043B1E1B,0.0,syracuse university
+224,0474BFAF,0.0,texas instruments
+217,044C0559,0.0,bell labs
+219,04592826,0.0,washington state university
+220,045C11B3,0.0,athens university of economics and business
+262,052BF631,0.0,jean monnet university
+228,0478D4F8,0.0,university of tennessee
+282,05A21A71,0.0,braunschweig university of technology
+270,054B33A5,0.0,institut national des sciences appliquees de rouen
+271,0555D86A,0.0,illinois state police
+272,055B394D,0.0,university of trier
+273,05669A68,0.0,south china university of technology
+276,056FA77A,0.0,university of haifa
+278,0578DF46,0.0,national cheng kung university
+279,0581F5D5,0.0,university of science and technology beijing
+280,0582A04E,0.0,colorado state university
+281,059DE5E4,0.0,indian institute of technology kanpur
+283,05A3DA1F,0.0,university of twente
+267,0538AC16,0.0,coverity
+286,05B3DFF1,0.0,universite catholique de louvain
+287,05B9651E,0.0,kumamoto university
+288,05BDC90E,0.0,national yang ming university
+289,05C31D4B,0.0,technical university of denmark
+297,05E74909,0.0,macquarie university
+300,05EEE4E0,0.0,polish academy of sciences
+301,05EFFB90,0.0,national taipei university
+303,05F6E42A,0.0,university of stuttgart
+304,06041575,0.0,university college dublin
+268,05397CB8,0.0,vtt technical research centre of finland
+265,0535FE32,0.0,ithaca college
+229,0486EC92,0.0,free university of berlin
+244,04C3CCF3,0.0,university of brescia
+231,0489F1AC,0.0,biodesign institute
+232,048AB435,0.0,university of jena
+233,04905D15,0.0,southeast university
+234,04946B1E,0.0,university of missouri
+235,049573B2,0.0,university of coimbra
+236,04AEE5C7,0.0,monash university clayton campus
+238,04AF492D,0.0,rutgers business school newark and new brunswick
+239,04B01E55,0.0,dresden university of technology
+242,04BEE6D7,0.0,university of birmingham
+246,04D98949,0.0,old dominion university
+263,052F5108,0.0,royal institute of technology
+247,04EAD036,0.0,auburn university
+250,04F2C66A,0.0,eindhoven university of technology
+251,04F353DF,0.0,robotics institute
+252,04F99C7A,0.0,it university of copenhagen
+253,04FB01B8,0.0,universidade nova de lisboa
+255,0501E2EA,0.0,ensae paristech
+256,0502A721,0.0,hyogo university
+257,050513B0,0.0,university of california davis
+259,050BB43F,0.0,academia sinica
+212,0437D79B,0.0,mines paristech
+740,863C435D,0.0,fujitsu
+210,041C3083,0.0,martin luther university of halle wittenberg
+64,01198E98,0.0,yantai university
+76,01461554,0.0,aristotle university of thessaloniki
+75,01444027,0.0,charles university in prague
+73,013A0DA1,0.0,university of kent
+72,0139FCD5,0.0,denison university
+70,01328BF3,0.0,princeton university
+66,012BCF09,0.0,wright state university
+62,01124466,0.0,university of sao paulo
+79,0159FE4E,0.0,williams college
+60,0108DAB7,0.0,aalto university school of science
+59,0108016A,0.0,university of alabama
+57,00FD6FCE,0.0,hunan university
+56,00FB0CDD,0.0,university of texas system
+55,00FA1C18,0.0,tel aviv university
+53,00F94921,0.0,university of sannio
+77,0147F037,0.0,aix marseille university
+80,015B46C7,0.0,ohio university
+51,00F8422C,0.0,santa clara university
+97,01C3C549,0.0,ecole normale superieure
+107,01F1D439,0.0,university of saskatchewan
+104,01E93C2F,0.0,heriot watt university
+102,01E0D8CE,0.0,technische universitat darmstadt
+100,01D5887E,0.0,istituto italiano di tecnologia
+99,01C641C3,0.0,budapest university of technology and economics
+98,01C5C92C,0.0,guangxi normal university
+96,01B2BC70,0.0,dso national laboratories
+81,016FC32A,0.0,conocophillips
+95,01AFAF1B,0.0,university of surrey
+92,01A842AA,0.0,brown university
+89,018E2322,0.0,stellenbosch university
+87,017F2ECE,0.0,federal university of pernambuco
+83,01739E09,0.0,university of buenos aires
+82,01710C78,0.0,sichuan university
+52,00F87E5D,0.0,college of william mary
+50,00F1EE39,0.0,telecom sudparis
+209,041B3329,0.0,indian institute of technology delhi
+11,003E7116,0.0,graz university of technology
+17,004CA7A3,0.0,mcgill university
+16,004B1FBC,0.0,fraunhofer society
+15,00493E54,0.0,southwest jiaotong university
+14,0045D9F6,0.0,technical university of berlin
+13,0045D019,0.0,hanyang university
+12,00433890,0.0,bogazici university
+9,002932B0,0.0,pontifical catholic university of rio de janeiro
+22,006952C5,0.0,brandeis university
+8,0027E0B8,0.0,university of south florida
+6,001C3B8F,0.0,university of basel
+5,0014A048,0.0,koc university
+3,0011114D,0.0,university of east anglia
+2,000CF342,0.0,sungkyunkwan university
+1,0005FC5A,0.0,university at albany suny
+18,004E3300,0.0,ecole polytechnique federale de lausanne
+24,0073ECCC,0.0,hungarian academy of sciences
+48,00E5C27A,0.0,university of bordeaux
+36,00A87317,0.0,university of bergamo
+46,00D4F325,0.0,bar ilan university
+44,00CE2969,0.0,texas state university
+43,00CD8766,0.0,vrije universiteit brussel
+42,00CC80B3,0.0,joanneum research
+41,00C86936,0.0,university of cantabria
+38,00BC8D07,0.0,telecom paristech
+35,00A52A7E,0.0,universidade federal de ouro preto
+26,007B4591,0.0,clemson university
+34,00A3C9C2,0.0,akamai technologies
+31,00962EEC,0.0,nanjing university of aeronautics and astronautics
+30,0092C1B8,0.0,polytechnic university of catalonia
+29,008ED3A6,0.0,university of bologna
+28,007D2F41,0.0,ludwig maximilian university of munich
+27,007B68B5,0.0,university of tubingen
+109,01F71AD0,0.0,yale university
+110,01FACAD8,0.0,university of florida
+111,01FB725A,0.0,german research centre for artificial intelligence
+170,035786DA,0.0,university of rennes
+179,0389C918,0.0,instituto politecnico nacional
+176,03839B48,0.0,case western reserve university
+175,037D28F2,0.0,deutsche telekom
+174,0368E8BE,0.0,new york university
+172,03672BD5,0.0,swinburne university of technology
+171,035F81F4,0.0,monash university
+169,0352F953,0.0,indiana university purdue university indianapolis
+181,038CB6F6,0.0,stony brook university
+168,03528CBA,0.0,technical university of crete
+166,034F3208,0.0,goldsmiths university of london
+165,0349EE07,0.0,university of california
+164,03496C27,0.0,university of turin
+163,03376F29,0.0,weizmann institute of science
+161,031C31BE,0.0,university of waikato
+180,038AE3AA,0.0,brunel university london
+183,03959311,0.0,nagoya university
+112,01FE29EA,0.0,university of massachusetts boston
+195,03C436D1,0.0,university at buffalo
+207,0412EAF6,0.0,shih hsin university
+204,03FCE859,0.0,university of yamanashi
+201,03FA8F1E,0.0,university of milano bicocca
+199,03E298B8,0.0,indian institute of technology hyderabad
+198,03D09CA7,0.0,marvell technology group
+197,03D00B37,0.0,massachusetts institute of technology
+194,03C3607B,0.0,university of cincinnati
+184,0395F208,0.0,concordia university
+193,03C2CC97,0.0,liverpool john moores university
+192,03C0079C,0.0,technische universitat munchen
+190,03B817A9,0.0,university of rouen
+188,03AC92A1,0.0,politehnica university of bucharest
+187,03A8769C,0.0,pa consulting group
+186,03A194FC,0.0,avaya
+160,031AFA6D,0.0,university of york
+159,0312B01D,0.0,university of virginia
+158,03099350,0.0,centers for medicare and medicaid services
+124,025139D2,0.0,zhengzhou university
+131,02642F55,0.0,university of oxford
+130,0262EA12,0.0,institute for advanced study
+129,025F5CB1,0.0,pierre and marie curie university
+128,025D2C19,0.0,colgate university
+127,025B9122,0.0,university of warwick
+125,02585490,0.0,humboldt university of berlin
+123,0240B99C,0.0,beijing university of technology
+157,03006309,0.0,charles iii university of madrid
+121,022F9467,0.0,courant institute of mathematical sciences
+118,02290965,0.0,national university of colombia
+117,0228E4F2,0.0,university of bristol
+115,021B9D77,0.0,naval postgraduate school
+114,0216C308,0.0,federal university of rio grande do norte
+113,02066FCD,0.0,xerox
+132,026778A2,0.0,rutgers newark
+133,0267A61E,0.0,university of chicago
+134,027426D0,0.0,t mobile us inc
+135,028E8644,0.0,nicta
+138,02965656,0.0,laval university
+140,02AA1FA9,0.0,university of science and technology sana a
+141,02AD1047,0.0,mitre corporation
+142,02AD820C,0.0,ozyegin university
+144,02B1C5D7,0.0,university of calabria
+145,02B49FCD,0.0,gakushuin university
+147,02B911E0,0.0,ecole polytechnique de montreal
+149,02C7065C,0.0,poznan university of technology
+150,02D4CE98,0.0,coppin state university
+152,02D66721,0.0,hang seng management college
+154,02D9A7F2,0.0,sultan qaboos university
+155,02DB0F2D,0.0,vmware
+156,02E90378,0.0,paris 8 university
+305,06167391,0.0,linkoping university
+370,0749A315,0.0,university of nebraska omaha
+307,0617689C,0.0,university of paris sud
+603,0BCE997F,0.0,ball state university
+612,0C280BFF,0.0,keio university
+611,0C21380B,0.0,comprehensive epilepsy center
+610,0C1EB600,0.0,university of lyon
+609,0C14EACF,0.0,university of zurich
+607,0BF8A745,0.0,nanjing university of information science and technology
+606,0BF79DFE,0.0,national and kapodistrian university of athens
+604,0BF6BC56,0.0,vanderbilt university
+601,0BC3491B,0.0,korea university
+645,345C2848,0.0,university of hasselt
+600,0BC2EB17,0.0,university of mainz
+599,0BC22D41,0.0,nagoya institute of technology
+598,0BC1D058,0.0,hebrew university of jerusalem
+596,0BC0A2DC,0.0,southeastern louisiana university
+595,0BBB6080,0.0,la trobe university
+594,0BB2E102,0.0,providence college
+593,0B908117,0.0,university of ioannina
+615,0C2DEF79,0.0,aarhus university
+616,0C2FE58D,0.0,washington university in st louis
+619,0C33EF81,0.0,university of paris
+623,0C42C8D3,0.0,institut mines telecom
+643,33CD4141,0.0,netflix
+642,339CD1B3,0.0,vu university amsterdam
+640,335ED749,0.0,sapienza university of rome
+639,3333E44B,0.0,virginia tech
+638,2BECA4ED,0.0,college of western idaho
+636,0F36910E,0.0,university of zaragoza
+635,0DC52CFD,0.0,hellenic open university
+634,0D8F2D0E,0.0,university of szeged
+632,0D52D485,0.0,university of utah
+630,0CECE932,0.0,ecole centrale paris
+629,0CA4B187,0.0,university of victoria
+628,0C6703C3,0.0,david r cheriton school of computer science
+627,0C629EED,0.0,lahore university of management sciences
+626,0C601A7F,0.0,slovak academy of sciences
+625,0C55BCAD,0.0,university of paderborn
+591,0B890E85,0.0,george washington university
+590,0B86525A,0.0,daegu gyeongbuk institute of science and technology
+588,0B7D39A1,0.0,university of macedonia
+557,0AE14045,0.0,university of porto
+554,0AD224B5,0.0,thales communications
+553,0ACFCEA7,0.0,state university of campinas
+551,0ACF14C4,0.0,university of zagreb
+549,0ACD6604,0.0,university of oregon
+547,0AC8F2B8,0.0,university of hyogo
+546,0AC5ACB1,0.0,shenzhen university
+545,0AC1438B,0.0,university of bremen
+544,0AB1BE73,0.0,indian council of agricultural research
+543,0AAEC4EC,0.0,university of augsburg
+541,0A9A3087,0.0,university of western australia
+540,0A990BE9,0.0,university of mannheim
+538,0A968F8B,0.0,university of dundee
+537,0A8478AE,0.0,university of potsdam
+536,0A6C6FB4,0.0,university of patras
+535,0A6604CB,0.0,national technical university of athens
+556,0ADC5821,0.0,university of salzburg
+559,0B002509,0.0,royal holloway university of london
+587,0B7A84D3,0.0,rose hulman institute of technology
+561,0B00BA67,0.0,national institute of informatics
+585,0B78A057,0.0,sandia national laboratories
+584,0B659C39,0.0,xiamen university
+583,0B54FBF6,0.0,united nations university
+581,0B4B5593,0.0,falmouth university
+579,0B46563B,0.0,united states naval academy
+574,0B317C57,0.0,ionian university
+573,0B2D8123,0.0,lund university
+572,0B23EC19,0.0,university of luxembourg
+571,0B23C19B,0.0,internet initiative japan
+570,0B1B8D25,0.0,university of passau
+567,0B0ADEB6,0.0,university of toronto
+565,0B05FE67,0.0,university of oslo
+564,0B054663,0.0,metz
+563,0B0338EC,0.0,information sciences institute
+562,0B017C0B,0.0,sorbonne
+644,34190567,0.0,teesside university
+647,34C238D5,0.0,abb ltd
+310,061A19CA,0.0,bryn mawr college
+700,4E286443,0.0,apple inc
+709,4ECD74BC,0.0,alcatel lucent
+707,4EBC7FCF,0.0,arbor networks
+706,4E78BE27,0.0,beth israel deaconess medical center
+704,4E636137,0.0,marshfield clinic
+703,4E47B81B,0.0,russian academy of sciences
+702,4E3BBB83,0.0,naval medical research center
+701,4E2EC568,0.0,amazon com
+699,4E1BB800,0.0,accenture
+649,34ED541F,0.0,rwth aachen university
+698,4E1BA375,0.0,chicago metropolitan agency for planning
+697,4E0DE25A,0.0,blackberry limited
+696,4E045540,0.0,symantec
+695,4DFEDD28,0.0,santa fe institute
+694,4DF15CEF,0.0,lytro
+693,4DDE3B69,0.0,adobe systems
+692,4DDC055F,0.0,institut de recherche pour le developpement
+710,4EDF3BB0,0.0,information technology university
+711,4EEE5722,0.0,rehabilitation institute of chicago
+712,4EF77785,0.0,hewlett packard
+714,4F076E00,0.0,siemens
+738,863B5D1F,0.0,cloudera
+736,86349B09,0.0,taobao
+735,863479D1,0.0,singapore general hospital
+734,86317390,0.0,technicolor
+727,500F4F9C,0.0,intel
+726,500B3463,0.0,oracle corporation
+723,4FB0218B,0.0,national presto industries
+722,4FA5C415,0.0,wellcome trust centre for human genetics
+721,4F8CCD61,0.0,jet propulsion laboratory
+720,4F872588,0.0,at t labs
+719,4F51463F,0.0,narus
+718,4F4B6B43,0.0,mayo clinic
+717,4F3BE6AD,0.0,philips
+716,4F1AE805,0.0,state university of new york system
+715,4F10C1EB,0.0,french institute for research in computer science and automation
+691,4DCCAA64,0.0,lovelace respiratory research institute
+690,4DBAC46F,0.0,nvidia
+689,4DADEF94,0.0,max planck institute for intelligent systems
+666,4C81D300,0.0,netapp
+664,4C7A9B63,0.0,at t
+663,4C6E8511,0.0,lawrence livermore national laboratory
+662,4C5370B9,0.0,ames research center
+661,373A6845,0.0,leipzig university
+660,3709B4C3,0.0,exxonmobil
+659,36E5AE3D,0.0,kxen inc
+658,36E22876,0.0,american hotel lodging educational institute
+657,35E9831D,0.0,ruhr university bochum
+656,35BD5C33,0.0,interpublic group of companies
+655,358A0AB5,0.0,sei investments company
+654,351E811C,0.0,aalborg university
+653,35170767,0.0,international society for intelligence research
+652,35095641,0.0,bosch
+651,350410CF,0.0,university of hong kong
+650,34F273FD,0.0,institute of company secretaries of india
+665,4C7D4F86,0.0,brigham and women s hospital
+667,4CC3C85D,0.0,massachusetts general hospital
+688,4DA444BF,0.0,chinese ministry of public security
+668,4CC89935,0.0,united states naval research laboratory
+686,4D8C4F7A,0.0,rakuten
+685,4D8B08D7,0.0,centralesupelec
+684,4D7B0467,0.0,bloomberg l p
+683,4D71CB46,0.0,national institutes of health
+682,4D68F3D7,0.0,environmental defense fund
+681,4D66E94F,0.0,shizuoka university
+680,4D634C00,0.0,sri international
+679,4D5D795C,0.0,international computer science institute
+678,4D2B1EE6,0.0,centre national de la recherche scientifique
+677,4D1FB58D,0.0,emc corporation
+675,4D07390E,0.0,nuance communications
+672,4CDD5BAE,0.0,bbn technologies
+671,4CDC36DD,0.0,niksun inc
+670,4CD3CC33,0.0,johnson johnson pharmaceutical research and development
+669,4CD2C7C1,0.0,boston children s hospital
+533,0A5DAC76,0.0,iowa state university
+532,0A5D91BE,0.0,university of washington tacoma
+531,0A575E93,0.0,parc
+385,0782737C,0.0,skolkovo institute of science and technology
+397,07BAB9E7,0.0,wharton school of the university of pennsylvania
+396,07B9F6F5,0.0,university of molise
+394,07B6A2A8,0.0,tampere university of technology
+392,07A75F52,0.0,university of southern indiana
+389,078981CC,0.0,delphi automotive
+388,0787E01C,0.0,portland state university
+386,07862589,0.0,queen s university belfast
+383,077EC9E4,0.0,university of western ontario
+530,0A567B93,0.0,university of applied sciences western switzerland
+382,077DD57B,0.0,city college of new york
+381,07681456,0.0,oxford brookes university
+380,07679147,0.0,ben gurion university of the negev
+377,075ABF1F,0.0,uppsala university
+376,0757A922,0.0,reykjavik university
+374,07511464,0.0,sas institute
+373,074BDB0A,0.0,california institute of technology
+398,07BC3356,0.0,university of vienna
+399,07BDC4B0,0.0,university of oldenburg
+400,07C34834,0.0,university of minnesota
+403,07D2B6B9,0.0,oregon state university
+421,083D03E5,0.0,eastern michigan university
+420,0839CEE3,0.0,university of arizona
+419,083839C7,0.0,north carolina state university
+418,0837B2CF,0.0,central university of finance and economics
+417,0832C111,0.0,telecom italia
+416,0830FCA0,0.0,franklin w olin college of engineering
+414,0815134D,0.0,kyushu university
+412,080E155C,0.0,university of bonn
+411,080DBBEF,0.0,universite de sherbrooke
+410,08053B2B,0.0,paul sabatier university
+409,07FD08C8,0.0,alpen adria universitat klagenfurt
+408,07F8AFEC,0.0,university of massachusetts lowell
+406,07F5B6CA,0.0,harvey mudd college
+405,07DEF9D7,0.0,universite libre de bruxelles
+404,07DA0A1C,0.0,university of salerno
+372,074B3001,0.0,nikon
+371,074ADC51,0.0,university of modena and reggio emilia
+368,074491E2,0.0,tufts university
+336,06C2C7BC,0.0,ecole normale superieure de lyon
+332,069BF47D,0.0,disney research
+331,0699B629,0.0,paris descartes university
+330,06943C23,0.0,southern illinois university carbondale
+326,067C4210,0.0,baden wurttemberg cooperative state university
+325,0679E020,0.0,teradata
+324,06771A5A,0.0,stevens institute of technology
+321,066AF386,0.0,dartmouth college
+320,066A71BC,0.0,university of notre dame
+319,0661DECB,0.0,worcester polytechnic institute
+318,06601420,0.0,florida institute of technology
+317,0653F611,0.0,university of central florida
+316,06444F84,0.0,imdea
+314,062BC2E4,0.0,boston college
+312,061C6C3B,0.0,university of michigan school of public health
+311,061BA55B,0.0,supelec
+333,069DA7A7,0.0,sprint corporation
+340,06CCE1C6,0.0,goethe university frankfurt
+367,0743CD5B,0.0,johannes kepler university of linz
+342,06CF160C,0.0,beijing union university
+365,07427AD9,0.0,leiden university
+363,0733A746,0.0,yunnan normal university
+360,071126B7,0.0,university of bern
+359,07103214,0.0,national research university higher school of economics
+358,070DED1B,0.0,depaul university
+356,070DD5D4,0.0,nec
+355,070A9F1F,0.0,general motors
+354,070A58AF,0.0,new jersey institute of technology
+351,06EB0D45,0.0,university of rome tor vergata
+350,06E63D20,0.0,university of insubria
+347,06D835C2,0.0,tulane university
+346,06D39D72,0.0,tokyo institute of technology
+345,06D35AFB,0.0,new york university stern school of business
+344,06D27A8D,0.0,university of geneva
+343,06D18AFD,0.0,university of nebraska lincoln
+423,08495949,0.0,guangdong university of technology
+424,084B474F,0.0,dalla lana school of public health
+425,084D01D3,0.0,seoul national university
+502,09DE2F57,0.0,loyola university maryland
+500,09DD720A,0.0,kangwon national university
+497,09B97DFE,0.0,cyprus university of technology
+495,09B48D0B,0.0,indian institute of technology bombay
+494,09B2D407,0.0,george mason university
+493,09B0BBA7,0.0,university of texas at dallas
+491,099BC521,0.0,youngstown state university
+490,099A4032,0.0,university of marburg
+487,09988D7C,0.0,toyota technological institute at chicago
+486,097CD675,0.0,university of hamburg
+485,09676E2E,0.0,sun yat sen university
+483,0965EC45,0.0,university of liege
+482,09641F67,0.0,institute of science and technology austria
+481,09630970,0.0,kaist
+480,095FFF3F,0.0,maynooth university
+479,094DB5D4,0.0,university of california merced
+501,09DDAA88,0.0,tokyo denki university
+503,09E0E324,0.0,university of georgia
+476,0947E863,0.0,haverford college
+505,09E1E653,0.0,rensselaer polytechnic institute
+529,0A520111,0.0,franklin marshall college
+527,0A475496,0.0,university of cagliari
+525,0A2FAFA5,0.0,duke university
+524,0A2A1FC3,0.0,millsaps college
+522,0A254897,0.0,national university of defense technology
+520,0A1AB335,0.0,university of new mexico
+519,0A15C811,0.0,aston university
+518,0A1560D3,0.0,paris diderot university
+516,0A0FF9EB,0.0,h milton stewart school of industrial and systems engineering
+514,0A0D2BAD,0.0,university of calgary
+513,0A08EC51,0.0,kyoto sangyo university
+511,09F90C50,0.0,ge global research
+509,09EB4F00,0.0,united states army research laboratory
+508,09EB15AA,0.0,national university of cordoba
+507,09EA1A37,0.0,queen mary university of london
+478,09490884,0.0,university of south carolina
+475,093FC384,0.0,rochester institute of technology
+428,086E5DD5,0.0,monmouth university
+449,08D69EB4,0.0,lawrence berkeley national laboratory
+447,08BCC883,0.0,beckman institute for advanced science and technology
+445,08B9DFEF,0.0,university of tsukuba
+444,08B4FEC0,0.0,university of texas pan american
+442,08B1D62B,0.0,radboud university nijmegen
+440,08ADCF85,0.0,university of miami
+439,08A97E0C,0.0,deloitte
+438,08A948CC,0.0,johns hopkins university
+437,088A680B,0.0,hasso plattner institute
+436,08802AB2,0.0,university of crete
+435,088001DA,0.0,pacific northwest national laboratory
+434,087E04C5,0.0,ecole polytechnique
+433,087CBF68,0.0,college of staten island
+432,0875EA92,0.0,university of british columbia
+431,087165E4,0.0,western michigan university
+429,08702BDB,0.0,hong kong baptist university
+448,08D3D0B6,0.0,national chung cheng university
+450,08D6D550,0.0,netherlands organisation for applied scientific research
+474,09396A59,0.0,university of piraeus
+451,08D7E515,0.0,national chiao tung university
+472,0935E318,0.0,french institute of health and medical research
+471,093456D7,0.0,university of alberta
+469,092FD9CF,0.0,university of auckland
+467,09299093,0.0,university of ottawa
+466,09266AF0,0.0,national taiwan ocean university
+465,0922AB66,0.0,kaiserslautern university of technology
+464,091BC727,0.0,singapore university of technology and design
+462,0904612E,0.0,cisco systems inc
+461,08FB679F,0.0,mount holyoke college
+459,08F47EBA,0.0,university of shizuoka
+457,08EF72DE,0.0,kent state university
+455,08ED4AE9,0.0,universite de namur
+454,08EC4F5B,0.0,deakin university
+453,08EAA2CB,0.0,xidian university
+452,08E4D2D6,0.0,university of antwerp
+0,0003B055,0.0,university of cambridge
