@@ -10,6 +10,8 @@ PKL_PATH = join(dirname(__file__), 'pkl')
 CONF = ['SIGIR', 'SIGMOD', 'SIGCOMM']
 # Phase2 conference
 CONF = ['KDD', 'ICML']
+# Phase3 conference
+CONF = ['FSE', 'MOBICOM', 'MM']
 
 def select_from_df(df, column, targets):
     tmp = None
@@ -184,21 +186,21 @@ def proc_Keyword(DF, fname, cur, end):
 
 LOCK = mp.Lock()
 # filter PaperAuthorAffiliations
-# KDD_PAA = filter('PaperAuthorAffiliations.txt', ['Paper_ID', 'Author_ID', 'Affiliation_ID'], proc_PAA)
-# KDD_PAA.to_pickle(join(PKL_PATH, 'KDD_PAA.pkl'))
+KDD_PAA = filter('PaperAuthorAffiliations.txt', ['Paper_ID', 'Author_ID', 'Affiliation_ID'], proc_PAA)
+KDD_PAA.to_pickle(join(PKL_PATH, 'KDD_PAA.pkl'))
 
 # filter PaperReferences
-# KDD_ref = filter('PaperReferences.txt', ['Paper_ID', 'Paper_Reference_ID'], proc_ref)
-# KDD_ref.to_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
+KDD_ref = filter('PaperReferences.txt', ['Paper_ID', 'Paper_Reference_ID'], proc_ref)
+KDD_ref.to_pickle(join(PKL_PATH, 'KDD_ref.pkl'))
 
 # filter papers
-# KDD_PA = filter('Papers.txt', ['Paper_ID', 'Paper_Rank'], proc_PA)
-# KDD_PA.to_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
+KDD_PA = filter('Papers.txt', ['Paper_ID', 'Paper_Rank'], proc_PA)
+KDD_PA.to_pickle(join(PKL_PATH, 'KDD_PA.pkl'))
 
 # filter authors
-# KDD_A = filter('Authors.txt', ['Author_ID', 'Author_Name'], proc_Author)
-# KDD_A.to_pickle(join(PKL_PATH, 'Authors.pkl'))
+KDD_A = filter('Authors.txt', ['Author_ID', 'Author_Name'], proc_Author)
+KDD_A.to_pickle(join(PKL_PATH, 'Authors.pkl'))
 
 # keyword vector
-Paper_Keyword = filter('PaperKeywords.txt', ['Paper_ID', 'Keyword_Name', 'Field_ID'], proc_Keyword)
-Paper_Keyword.to_pickle(join(PKL_PATH, 'PaperKeywords.pkl'))
+# Paper_Keyword = filter('PaperKeywords.txt', ['Paper_ID', 'Keyword_Name', 'Field_ID'], proc_Keyword)
+# Paper_Keyword.to_pickle(join(PKL_PATH, 'PaperKeywords.pkl'))

@@ -192,7 +192,8 @@ class OMNIProp:
         X = np.dot(np.transpose(self.graph), S) + self.lamda * (np.ones((self.N, 1)) * np.asmatrix(B))
         return np.dot(F,X)
 
-Confs = ['ICML', 'KDD']
+# Phase3 conference
+Confs = ['FSE', 'MOBICOM', 'MM']
 Eta = [0.4,0.25,0.5]
 for x in range(len(Confs)):
     print(Confs[x])
